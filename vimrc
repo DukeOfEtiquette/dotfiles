@@ -16,6 +16,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+" plugin for checking syntax in code
+Plugin 'scrooloose/syntastic'
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -48,13 +50,15 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set relativenumber
+set number
 set tabstop=4
 set smarttab
 set softtabstop=4
 set shiftwidth=4
 set shiftround
+set backspace=indent,eol,start
 
-set showmatch
+let g:loaded_matchparen=1 " Turn off matching () highlighting
 
 set encoding=utf8
 
@@ -71,3 +75,17 @@ let NERDTreeShowHidden=1
 map <F5> :w  <enter>
 map <F6> :q  <enter>
 map <F7> :wq <enter>
+" Automatically place closing curly brace two lines down and cursor between
+" them
+inoremap { {<CR>}<Esc>ko
+" inoremap ( ()<Esc>i
+
+" Syntastic Setting
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
