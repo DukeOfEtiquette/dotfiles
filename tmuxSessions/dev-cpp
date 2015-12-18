@@ -1,0 +1,8 @@
+#!/bin/bash
+
+tmux new-session -d -s dev-cpp
+tmux split-window -h
+tmux select-pane -t 0
+# tmux set-window-option synchronize-panes on
+
+tmux attach -t dev-cpp
