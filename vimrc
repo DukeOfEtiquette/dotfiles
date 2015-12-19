@@ -77,7 +77,7 @@ map <F6> :q  <enter>
 map <F7> :wq <enter>
 " Automatically place closing curly brace two lines down and cursor between
 " them
-inoremap { {<CR>}<Esc>ko
+autocmd Filetype c,cpp inoremap { {<CR>}<Esc>ko
 " inoremap ( ()<Esc>i
 
 " Syntastic Setting
