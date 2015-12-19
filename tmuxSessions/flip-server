@@ -1,9 +1,14 @@
 #!/bin/bash
 
-tmux new-session -d -s dev-cpp
-tmux split-window -h
-tmux select-pane -t 0
-tmux set-window-option synchronize-panes on
-tmux send-keys "osu" C-m
+tmux has-session -t flip-server 2>/dev/null
+if [ "$?" -eq 1 ]; then
+	tmux new-session -d -s flip-server
+	tmux split-window -h
+	tmux select-pane -t 0
+	tmux set-window-option synchronize-panes on
+	tmux send-keys "osu" C-m
+else
+	echo "Session Found. Connecting."
+fi
 
-tmux attach -t dev-cpp
+tmux attach -t flip-server

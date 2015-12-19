@@ -7,6 +7,8 @@ alias h='cd ~'  #Quickly get home
 alias retm='tmux source-file ~/.tmux.conf'  #Reload tmux config file after change
 alias tmux='TERM=screen-256color-bce tmux'
 alias vim='/usr/local/bin/vim' # Use brew installed vim
+alias dev-cpp='/Users/DenaeDuQuette/dotfiles/tmuxSessions/dev-cpp'
+alias flip-server='/Users/DenaeDuQuette/dotfiles/tmuxSessions/flip-server'
 
 # Setting PATH for Python 3.5
 # The orginal version is saved in .bash_profile.pysave

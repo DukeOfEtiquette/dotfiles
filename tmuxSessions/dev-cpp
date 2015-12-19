@@ -1,8 +1,13 @@
 #!/bin/bash
 
-tmux new-session -d -s dev-cpp
-tmux split-window -h
-tmux select-pane -t 0
-# tmux set-window-option synchronize-panes on
+tmux has-session -t dev-cpp 2>/dev/null
+if [ "$?" -eq 1 ]; then
+	tmux new-session -d -s dev-cpp
+	tmux split-window -h
+	tmux select-pane -t 0
+	# tmux set-window-option synchronize-panes on
+else
+	echo "Session Found. Connecting."
+fi
 
 tmux attach -t dev-cpp
