@@ -8,8 +8,8 @@ alias do='cd ~/Documents'
 alias retm='tmux source-file ~/.tmux.conf'  #Reload tmux config file after change
 alias tmux='TERM=screen-256color-bce tmux'
 alias vim='/usr/local/bin/vim' # Use brew installed vim
-alias dcp='/Users/teacher/dotfiles/tmuxSessions/dev-cpp'
-alias fs='/Users/teacher/dotfiles/tmuxSessions/flip-server'
+alias dcp='~/.everc/dotfiles/tmuxSessions/dev-cpp'
+alias fs='~/.everc/dotfiles/tmuxSessions/flip-server'
 alias mysql='/usr/local/mysql/bin/mysql -u root -p'
 alias chrome='open -a "Google Chrome"'
 #alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
