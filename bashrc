@@ -1,8 +1,9 @@
+
 alias c='clear'
 alias la='ls -a'
 alias ll='ls -l'
 alias p='cd ~/Documents/projects'
-alias ap='cd ~/Documents/apprenti'
+alias ap='cd ~/Documents/devStation'
 alias d='cd ~/Desktop'
 alias do='cd ~/Documents'
 alias retm='tmux source-file ~/.tmux.conf'  #Reload tmux config file after change
@@ -16,20 +17,23 @@ alias chrome='open -a "Google Chrome"'
 alias arduino='./Applications/Arduino.app/Contents/MacOS/Arduino'
 alias sshrp='ssh -l pi proxy8.yoics.net -p 32808'
 alias ho='heroku open'
-alias g='git status'
 alias class='cd ~/Documents/apprenti/bend-201d1'
 alias eve='cd ~/.everc'
 alias dc='cd ~/.everc/personal/devcascadia'
 
 # git shortcuts
 alias gs='git status'
+alias gac='git commit -am'
+
+# DevStation
+alias cf201='cd ~/Documents/devStation/201/201d2'
 
 # Coloring for ls
 export CLICOLOR=1
 export LSCOLORS=dxFxBxDxCxegedabagacad
 alias ls='ls -Gh'
 
-export PATH=~/use/bin:$PATH
+export PATH=~/usr/bin:~/bin:~/bin/*:$PATH
 
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
@@ -47,8 +51,3 @@ function color_my_prompt {
 color_my_prompt
 export PATH="/usr/local/opt/mongodb@3.4/bin:$PATH"
 export PATH="/usr/local/opt/mongodb\@3.4/bin:$PATH"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
