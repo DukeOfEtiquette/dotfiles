@@ -5,9 +5,15 @@
 ############################
 
 ########## Variables
-
-dir=~/.everc/dotfiles                    # dotfiles directory
-olddir=~/.everc/dotfiles_old             # old dotfiles backup directory
+if [ -z "$1" ]
+  then
+    echo "ERROR_USAGE: No system root path supplied as argument"
+    exit 128
+  else
+    root=$1
+fi
+dir=$root/.everc/dotfiles                    # dotfiles directory
+olddir=$root/.everc/dotfiles_old             # old dotfiles backup directory
 files="profile vimrc bashrc tmux.conf"    # list of files/folders to symlink in homedir
 
 ##########
@@ -25,7 +31,7 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
+    mv $root/.$file $olddir
     echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    ln -s $dir/$file $root/.$file
 done
