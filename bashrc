@@ -1,4 +1,3 @@
-
 alias c='clear'
 alias la='ls -a'
 alias ll='ls -l'
@@ -27,13 +26,15 @@ alias gac='git commit -am'
 
 # DevStation
 alias cf201='cd ~/Documents/devStation/201/201d2'
+alias cf301='cd ~/Documents/devStation/301'
+alias cf401='cd ~/Documents/devStation/401'
 
 # Coloring for ls
 export CLICOLOR=1
 export LSCOLORS=dxFxBxDxCxegedabagacad
 alias ls='ls -Gh'
 
-export PATH=~/usr/bin:~/bin:~/bin/*:$PATH
+export PATH=/usr/local/bin:~/bin/*/:$PATH
 
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
@@ -51,3 +52,6 @@ function color_my_prompt {
 color_my_prompt
 export PATH="/usr/local/opt/mongodb@3.4/bin:$PATH"
 export PATH="/usr/local/opt/mongodb\@3.4/bin:$PATH"
+export PATH="/Users/teacher/.ebcli-virtual-env/executables:$PATH"
+export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+eval "$(rbenv init -)"
