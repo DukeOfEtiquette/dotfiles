@@ -1,6 +1,6 @@
 # dotfiles
 
-- Intall iTerm - https://www.iterm2.com/downloads.html
+- Install iTerm - https://www.iterm2.com/downloads.html
 - Install Homebrew - brew.sh
 	- Run brew doctor and resolve any issues before moving on
 - Install vim with homebrew
