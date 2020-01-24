@@ -2,33 +2,33 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " Syntax highlighting for slim templates
-Plugin 'slim-template/vim-slim.git'
+" Plugin 'slim-template/vim-slim.git'
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Plugin 'VundleVim/Vundle.vim'
 " Plugin 'Rip-Rip/clang_complete'
 
 " Autocomplete, syntax highlighting
 " https://github.com/vim-ruby/vim-ruby/wiki/VimRubySupport
-Bundle 'vim-ruby/vim-ruby'
+" Bundle 'vim-ruby/vim-ruby'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 " plugin for checking syntax in code
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 
 " plugin for swift syntax highlighting
-Plugin 'keith/swift.vim'
+" Plugin 'keith/swift.vim'
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -47,8 +47,8 @@ Plugin 'keith/swift.vim'
 "Plugin 'rdnetto/YCM-Generator'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" call vundle#end()            " required
+" filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -70,44 +70,23 @@ set smarttab
 set expandtab
 set shiftround
 set backspace=indent,eol,start
-setlocal ts=2 sts=2 sw=2
-" autocmd Filetype c,cpp,html,css,txt,ruby, slim setlocal ts=2 sts=2 sw=2
-autocmd Filetype swift,py setlocal ts=4 sts=4 sw=4
-"set softtabstop=2
-"set tabstop=2
-"set shiftwidth=2
 
-let g:loaded_matchparen=1 " Turn off matching () highlighting
+" default tab spacing
+setlocal ts=2 sts=2 sw=2
+
+" Filetype specific tab spacing
+autocmd Filetype swift,py,html setlocal ts=4 sts=4 sw=4
+
+" let g:loaded_matchparen=1 " Turn off matching () highlighting
 
 set encoding=utf8
-set clipboard=unnamed
+" set clipboard=unnamed
 
 syntax on
 
-
-" NERDTree settings
-map <F2> :NERDTreeToggle<CR>
-map <F3> :NERDTreeFind<CR>
-let g:NERDTreeMapActivateNod="<F3>"
-let NERDTreeShowHidden=1
-
 " Random key-maps
-map <F5> :w  <enter>
-map <F6> :q  <enter>
-map <F7> :wq <enter>
+" map <F5> :w  <enter>
+" map <F6> :q  <enter>
+" map <F7> :wq <enter>
 map <C-c> :s/^/\/\//<Enter>
 map <C-u> :s/^\/\///<Enter>
-" Automatically place closing curly brace two lines down and cursor between
-" them
-autocmd Filetype c,cpp,swift inoremap { {<CR>}<Esc>ko
-" inoremap ( ()<Esc>i
-
-" Syntastic Setting
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0

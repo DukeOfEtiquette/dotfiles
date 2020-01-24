@@ -1,37 +1,117 @@
 #!/bin/bash
 ############################
-# .make.sh
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+# ./installDotfiles
+#
+# This script will apply version control to all system settings, apply the most recent changes to the system, and create backups of all files/directories before running. All paths are intended to be absolute allowing you to run from anywhere.
 ############################
 
-########## Variables
-if [ -z "$1" ]
-  then
-    echo "ERROR_USAGE: No system root path supplied as argument"
-    exit 128
-  else
-    root=$1
-fi
-dir=$root/.everc/dotfiles                    # dotfiles directory
-olddir=$root/.everc/dotfiles_old             # old dotfiles backup directory
-files="profile vimrc bashrc tmux.conf"    # list of files/folders to symlink in homedir
+# where will the dotfiles backup live?
+personal_dir=.everc
+
+# dotfiles directory
+dotfile_dir=$HOME/$personal_dir/dotfiles
+
+# dotfiles backup directory
+backup_olddir=$HOME/$personal_dir/dotfiles_bck
 
 ##########
+# This function creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+function backup_homedir () {
+  printf "### STARTING $HOME/ BACKUP ###\n"
 
-# create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir
-echo "...done"
+  # list of files/folders to symlink in homedir
+  # These files live at root of directory of backup project
+  files="profile vimrc tmux.conf zshrc" #notice no dots in front, get added later
 
-# change to the dotfiles directory
-echo "Changing to the $dir directory"
-cd $dir
-echo "...done"
+  # create dotfiles_old in homedir
+  printf "Creating $backup_olddir for backup of any existing dotfiles in ~"
+  mkdir -p $backup_olddir
+  printf "...done\n\n"
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv $root/.$file $olddir
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file $root/.$file
-done
+  # change to the dotfiles directory
+  printf "Changing to the $dotfile_dir directory"
+  cd $dotfile_dir
+  printf "...done\n\n"
+
+  # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
+  for file in $files; do
+      printf "Moving $HOME/.$file to $backup_olddir"
+      mv $HOME/.$file $backup_olddir
+      printf "Creating symlink to $file in home directory.\n\n"
+      ln -s $dotfile_dir/$file $HOME/.$file
+  done
+}
+
+# This function is responsible for backing up any oh-my-zsh themes
+function backup_omz () {
+  printf "### STARTING OMZ BACKUP ###\n\n"
+
+  # make backup of OMZ themes
+  mkdir -p $backup_olddir/omz_themes
+
+  # MOVE everything that is a theme to backup location
+  mv $HOME/.oh-my-zsh/themes/*.zsh-theme $backup_olddir/omz_themes/
+
+  # copy target OMZ themes to system
+  cp $dotfile_dir/omz_themes/* $HOME/.oh-my-zsh/themes/
+}
+
+# This function is responsible for backing up any i3 system configs
+function backup_i3config () {
+  printf "### STARTING i3 CONFIG BACKUP ###\n\n"
+
+  # make backup of Linux i3 .confg
+  mkdir -p $backup_olddir/.config/i3
+  mkdir -p $backup_olddir/.config/i3status
+
+  # MOVE anything in system .config that starts with 'i3' to backup
+  mv $HOME/.config/i3/config $backup_olddir/.config/i3/
+  mv $HOME/.config/i3status/config $backup_olddir/.config/i3status/
+
+  # copy these Linux i3 .config to system
+  cp -r $dotfile_dir/.config/i3/* $HOME/.config/i3/
+  cp -r $dotfile_dir/.config/i3status/* $HOME/.config/i3status/
+}
+
+# This function is responsible for backing up any custom installed fonts
+function backup_fonts () {
+  printf "### STARTING FONT BACKUP ###\n\n"
+
+  # make backup of Linux i3 .confg
+  mkdir -p $backup_olddir/.fonts
+
+  # MOVE anything in system .config that starts with 'i3' to backup
+  mv $HOME/.fonts/*.ttf $backup_olddir/.fonts/
+
+  # copy these Linux i3 .config to system
+  mkdir -p $HOME/.fonts/
+  cp -r $dotfile_dir/.fonts/*.ttf $HOME/.fonts/
+}
+
+# This function is responsible for backing up XFCE terminal config
+function backup_terminal () {
+  printf "### STARTING xfce4-terminal BACKUP ###\n\n"
+
+  # make backup of Linux i3 .confg
+  mkdir -p $backup_olddir/.config/xfce4/terminal
+
+  # MOVE anything in system .config that starts with 'i3' to backup
+  mv $HOME/.config/xfce4/terminal/terminalrc $backup_olddir/.config/xfce4/terminal/terminalrc
+
+  # copy these Linux i3 .config to system
+  cp $dotfile_dir/.config/xfce4/terminal/terminalfc $HOME/.config/xfce4/terminal/
+}
+
+# This function controls what backup functions are run
+function backup_all () {
+  backup_homedir
+  backup_omz
+  backup_i3config
+  backup_fonts
+  # backup_terminal
+}
+
+# entry point
+backup_all
+
+printf "### BACKUP COMPLETE ###\n"
