@@ -60,7 +60,6 @@ function backup_omz () {
 function backup_i3config () {
   printf "### STARTING i3 CONFIG BACKUP ###\n\n"
 
-  # make backup of Linux i3 .confg
   mkdir -p $backup_olddir/.config/i3
   mkdir -p $backup_olddir/.config/i3status
 
@@ -77,13 +76,12 @@ function backup_i3config () {
 function backup_fonts () {
   printf "### STARTING FONT BACKUP ###\n\n"
 
-  # make backup of Linux i3 .confg
   mkdir -p $backup_olddir/.fonts
 
-  # MOVE anything in system .config that starts with 'i3' to backup
+  # MOVE any TTF in system .fonts
   mv $HOME/.fonts/*.ttf $backup_olddir/.fonts/
 
-  # copy these Linux i3 .config to system
+  # copy these Linux .font
   mkdir -p $HOME/.fonts/
   cp -r $dotfile_dir/.fonts/*.ttf $HOME/.fonts/
 }
@@ -92,14 +90,13 @@ function backup_fonts () {
 function backup_terminal () {
   printf "### STARTING xfce4-terminal BACKUP ###\n\n"
 
-  # make backup of Linux i3 .confg
   mkdir -p $backup_olddir/.config/xfce4/terminal
 
   # MOVE anything in system .config that starts with 'i3' to backup
   mv $HOME/.config/xfce4/terminal/terminalrc $backup_olddir/.config/xfce4/terminal/terminalrc
 
   # copy these Linux i3 .config to system
-  cp $dotfile_dir/.config/xfce4/terminal/terminalfc $HOME/.config/xfce4/terminal/
+  cp $dotfile_dir/.config/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/
 }
 
 # This function controls what backup functions are run
@@ -108,7 +105,7 @@ function backup_all () {
   backup_omz
   backup_i3config
   backup_fonts
-  # backup_terminal
+  backup_terminal
 }
 
 # entry point
