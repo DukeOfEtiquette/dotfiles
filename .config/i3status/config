@@ -17,7 +17,7 @@ order += "tztime local"
 # order += "tztime france"
 
 load {
-  format = "<span> %5min Load </span>"
+  format = "<span> %1min Load </span>"
 }
 
 cpu_temperature 0 {

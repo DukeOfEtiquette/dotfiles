@@ -14,9 +14,25 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $ws2 "workspace 2"
+# Send mod key symbol when "right mod" is pressed, thus two mod keys
+# https://www.reddit.com/r/i3wm/comments/3zmp9c/two_mod_keys_thinkpad_andor_menu_key/
+exec --no-startup-id xmodmap -e 'keycode 135 = Super_L' && xset -r 135
+
+# monitor names
 set $monitor_left "DP-2"
 set $monitor_right "DP-1"
+
+set $wsSlack "1:Slack"
+set $wsWeb "2:Web"
+set $wsTerm "3:Term"
+set $wsMail "4:Email"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $wsCode "8:VSCode"
+set $ws9 "9"
+set $ws0 "10"
+set $wsChat "42:Chat"
 
 # https://media2.giphy.com/media/4PJhao7x3hAK4/giphy.gif?cid=790b76119a37e19f7fde75f8195515e777ea0a7d7ed6f60a&rid=giphy.gif
 # exec xrandr --output $monitor_right --mode 1920x1080
@@ -93,10 +109,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # manage multi-monitors
 bindsym $mod+Shift+b move workspace to output left
@@ -135,32 +151,32 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 $ws2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $wsSlack
+bindsym $mod+2 workspace $wsWeb
+bindsym $mod+3 workspace $wsTerm
+bindsym $mod+4 workspace $wsMail
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $wsCode
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
 
 # for personal chat client
-bindsym $mod+c workspace 42
+bindsym $mod+c workspace $wsChat
 
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to $wsSlack
+bindsym $mod+Shift+2 move container to $wsWeb
+bindsym $mod+Shift+3 move container to $wsTerm
+bindsym $mod+Shift+4 move container to $wsMail
+bindsym $mod+Shift+5 move container to $ws5
+bindsym $mod+Shift+6 move container to $ws6
+bindsym $mod+Shift+7 move container to $ws7
+bindsym $mod+Shift+8 move container to $wsCode
+bindsym $mod+Shift+9 move container to $ws9
+bindsym $mod+Shift+0 move container to $ws0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -231,30 +247,33 @@ bindsym Shift+Print exec "maim ~/screenshots/$(date +%F-%T).png -i $(xdotool get
 # Screen (will capture dual monitor)
 bindsym $mod+Print exec "maim ~/screenshots/$(date +%F-%T).png"
 
+# https://www.reddit.com/r/i3wm/comments/42087l/padding_in_the_titlebar/
+for_window [class=".*"] title_format "<span> %title</span>"
+
 # STARTUP and LOCATION
 ## Slack
-assign [class="Slack"] 1
+assign [class="Slack"] $wsSlack
 exec --no-startup-id slack
 
 ## Google
-assign [class="Google"] 2
-assign [class="firefox"] 2
-for_window [title="Hangouts"] move to workspace 42
+assign [class="Google"] $wsWeb
+assign [class="firefox"] $wsWeb
+for_window [title="Hangouts"] move to workspace $wsChat
 exec --no-startup-id google-chrome
 
 ## Terminal
-assign [class="terminal"] 3
+assign [class="terminal"] $wsTerm
 exec --no-startup-id i3-msg 'exec xfce4-terminal;'
 
 ## Evolution
-assign [class="Evolution"] 4
+assign [class="Evolution"] $wsMail
 exec --no-startup-id i3-msg 'exec evolution;'
 
 ## VSCode
-assign [class="Code"] 8
+assign [class="Code"] $wsCode
 
 ## Starting User Location
-exec --no-startup-id i3-msg 'workspace 3;'
+exec --no-startup-id i3-msg workspace $wsTerm
 
 # PANEL
 # https://www.schemecolor.com/dark-forest-greens-color-combination.php
@@ -279,7 +298,7 @@ bar {
 # class                 border  backgr. text    indicator child_border
 client.focused          #CC9600 #051F20 #DAF1DE #8EB69B   #d8dee8
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #2f343f #2f343f #DAF1DE #2f343f   #2f343f
+client.unfocused        #dddddd #5f676a #bbbbbb #2f343f   #2f343f
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 

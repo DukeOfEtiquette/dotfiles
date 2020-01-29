@@ -109,7 +109,6 @@ alias vz='vim ~/.everc/dotfiles/zshrc'
 # mmmmm sexy colors, https://github.com/trapd00r/LS_COLORS#installation
 eval $( dircolors -b $HOME/.dircolors )
 
-
 # ******************************************************************
 # reboot directly to windows
 #   Inspired by http://askubuntu.com/questions/18170/how-to-reboot-into-windows-from-ubuntu
@@ -122,9 +121,9 @@ function rebootwindows() {
 }
 
 # ENV Config
-export DOXYGEN_DIR="$HOME/bin/doxygen-1.8.12"
+# https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#environment-setup
+# export PATH="/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.1${PATH:+:${PATH}}"
 export PATH="$HOME/bin/doxygen-1.8.12/bin:$PATH"
-export MODELS='~/ts3d/models'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -141,5 +140,17 @@ alias chrome='google-chrome'
 # git
 alias gs="git status"
 alias gac="git commit -am"
-alias gaa="git add ."
+
+
+# ******************************************************************
+# TS3D Specifics
+# ******************************************************************
+
+
+# ENV Config
+export DOXYGEN_DIR="$HOME/bin/doxygen-1.8.12"
+export MODELS='~/ts3d/models'
+
+alias com='cd ~/ts3d/src/communicator'
+alias xlic='cat ~/ts3d/license.txt | xclip -sel c'
 
