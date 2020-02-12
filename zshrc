@@ -123,7 +123,7 @@ function rebootwindows() {
 # ENV Config
 # https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#environment-setup
 # export PATH="/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.1${PATH:+:${PATH}}"
-export PATH="$HOME/bin/doxygen-1.8.12/bin:$PATH"
+export PATH="$HOME/bin/doxygen-1.8.14/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -136,6 +136,8 @@ export EDITOR='/usr/bin/code'
 alias c="clear"
 alias o='mimeopen'
 alias chrome='google-chrome'
+alias py='python3'
+alias python='python3'
 
 # git
 alias gs="git status"
@@ -148,7 +150,7 @@ alias gac="git commit -am"
 
 
 # ENV Config
-export DOXYGEN_DIR="$HOME/bin/doxygen-1.8.12"
+export DOXYGEN_DIR="$HOME/bin/doxygen-1.8.14"
 export MODELS='~/ts3d/models'
 
 alias com='cd ~/ts3d/src/communicator'
