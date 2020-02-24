@@ -123,7 +123,6 @@ function rebootwindows() {
 # ENV Config
 # https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#environment-setup
 # export PATH="/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.1${PATH:+:${PATH}}"
-export PATH="$HOME/bin/doxygen-1.8.14/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -148,10 +147,17 @@ alias gac="git commit -am"
 # TS3D Specifics
 # ******************************************************************
 
+# Easy navigation
+alias src-com="cd $HOME/ts3d/src/communicator"
+
 
 # ENV Config
+export TS3D="$HOME/ts3d"
+export HOOPS_LICENSE="$TS3D/hoops_license.txt"
+export COMMUNICATOR_SOURCE="$TS3D/src/communicator"
 export DOXYGEN_DIR="$HOME/bin/doxygen-1.8.14"
 export MODELS='~/ts3d/models'
+export PATH="$HOME/bin/doxygen-1.8.14/bin:$PATH"
 
 alias com='cd ~/ts3d/src/communicator'
 alias xlic='cat ~/ts3d/license.txt | xclip -sel c'

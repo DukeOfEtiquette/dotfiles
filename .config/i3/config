@@ -167,16 +167,16 @@ bindsym $mod+c workspace $wsChat
 
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to $wsSlack
-bindsym $mod+Shift+2 move container to $wsWeb
-bindsym $mod+Shift+3 move container to $wsTerm
-bindsym $mod+Shift+4 move container to $wsMail
-bindsym $mod+Shift+5 move container to $ws5
-bindsym $mod+Shift+6 move container to $ws6
-bindsym $mod+Shift+7 move container to $ws7
-bindsym $mod+Shift+8 move container to $wsCode
-bindsym $mod+Shift+9 move container to $ws9
-bindsym $mod+Shift+0 move container to $ws0
+bindsym $mod+Shift+1 move container to workspace $wsSlack
+bindsym $mod+Shift+2 move container to workspace $wsWeb
+bindsym $mod+Shift+3 move container to workspace $wsTerm
+bindsym $mod+Shift+4 move container to workspace $wsMail
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $wsCode
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
