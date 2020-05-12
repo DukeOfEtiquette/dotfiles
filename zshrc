@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/adam/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -137,28 +137,61 @@ alias o='mimeopen'
 alias chrome='google-chrome'
 alias py='python3'
 alias python='python3'
+alias ypic='xclip -selection clipboard  -t image/png -i'
+alias volctl='pavucontrol'
+alias mongostart='sudo service mongod start'
+alias mongostop='sudo service mongod stop'
+alias mongorestart='sudo service mongod restart'
 
 # git
 alias gs="git status"
 alias gac="git commit -am"
 
-
 # ******************************************************************
 # TS3D Specifics
 # ******************************************************************
 
-# Easy navigation
-alias src-com="cd $HOME/ts3d/src/communicator"
-
-
 # ENV Config
-export TS3D="$HOME/ts3d"
-export HOOPS_LICENSE="$TS3D/hoops_license.txt"
-export COMMUNICATOR_SOURCE="$TS3D/src/communicator"
-export DOXYGEN_DIR="$HOME/bin/doxygen-1.8.14"
-export MODELS='~/ts3d/models'
-export PATH="$HOME/bin/doxygen-1.8.14/bin:$PATH"
+## doxygen
+export DOXYGEN_VERSION="doxygen-1.8.14"
+export DOXYGEN_DIR="$HOME/bin/$DOXYGEN_VERSION"
 
-alias com='cd ~/ts3d/src/communicator'
-alias xlic='cat ~/ts3d/license.txt | xclip -sel c'
+## ts3d specific locations
+export TS3D="$HOME/ts3d"
+export TS3D_HELPERS_BIN="$TS3D/bin/ts3d_helpers" # helper scripts
+export TS3D_MODELS="$TS3D/models"
+export TS3D_HOOPS_LICENSE="$TS3D/hoops_license.txt"
+
+## repo locations
+export TS3D_REPOS="$TS3D/src"
+export TS3D_HOOPS_REPOS="$TS3D_REPOS/hoops"
+export TS3D_COM_REPO="$TS3D_HOOPS_REPOS/communicator"
+export TS3D_VIS_REPO="$TS3D_HOOPS_REPOS/visualize"
+export TS3D_LEARN_REPOS="$TS3D_REPOS/learning"
+
+## PATH
+export PATH="$HOME/bin/$DOXYGEN_VERSION/bin:$PATH" # control system install doxygen
+export PATH="$TS3D_HELPERS_BIN:$PATH"
+
+
+# VPN shiz
+alias gp='globalprotect'
+alias gp-details='globalprotect show --details'
+alias gp-berk='globalprotect connect -portal vpn2.techsoft3d.com'
+alias gpd='globalprotect disconnect'
+
+
+# ez navigation
+alias src="cd $TS3D_REPOS"
+alias com="cd $TS3D_COM_REPO"
+alias vis="cd $TS3D_VIS_REPO"
+alias gss="cd $TS3D_LEARN_REPOS/global_search_stager"
+
+# build helpers
+alias com-bld-stg='build-com-docs && stage-com-docs'
+alias serve-com="live-server $TS3D_COM_REPO/documentation"
+
+# QoL
+alias xlic="cat $TS3D_HOOPS_LICENSE | xclip -sel c"
+alias ssh-little='ssh -t www-data@little.ts3d.lan "cd /raid/www/docs-test/communicator ; bash"' # dev deploys happen on little
 

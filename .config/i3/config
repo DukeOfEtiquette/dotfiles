@@ -19,20 +19,21 @@ set $mod Mod4
 exec --no-startup-id xmodmap -e 'keycode 135 = Super_L' && xset -r 135
 
 # monitor names
-set $monitor_left "DP-2"
-set $monitor_right "DP-1"
+set $monitor_left "DP-5"
+set $monitor_right "DP-7"
 
 set $wsSlack "1:Slack"
 set $wsWeb "2:Web"
 set $wsTerm "3:Term"
-set $wsMail "4:Email"
+set $wsMail "4:Mail"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $wsCode "8:VSCode"
+set $ws8 "8"
 set $ws9 "9"
 set $ws0 "10"
-set $wsChat "42:Chat"
+set $wsChat "c:chat"
+set $wsCode "f:code"
 
 # https://media2.giphy.com/media/4PJhao7x3hAK4/giphy.gif?cid=790b76119a37e19f7fde75f8195515e777ea0a7d7ed6f60a&rid=giphy.gif
 # exec xrandr --output $monitor_right --mode 1920x1080
@@ -131,7 +132,7 @@ bindsym $mod+semicolon split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+# bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -158,12 +159,13 @@ bindsym $mod+4 workspace $wsMail
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $wsCode
+bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws0
 
-# for personal chat client
+# non-numerical bindings
 bindsym $mod+c workspace $wsChat
+bindsym $mod+f workspace $wsCode
 
 
 # move focused container to workspace
@@ -174,9 +176,10 @@ bindsym $mod+Shift+4 move container to workspace $wsMail
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $wsCode
+bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0
+bindsym $mod+Shift+f move container to workspace $wsCode
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -253,21 +256,21 @@ for_window [class=".*"] title_format "<span> %title</span>"
 # STARTUP and LOCATION
 ## Slack
 assign [class="Slack"] $wsSlack
-exec --no-startup-id slack
+#exec --no-startup-id slack
 
 ## Google
 assign [class="Google"] $wsWeb
 assign [class="firefox"] $wsWeb
 for_window [title="Hangouts"] move to workspace $wsChat
-exec --no-startup-id google-chrome
+#exec --no-startup-id google-chrome
 
 ## Terminal
 assign [class="terminal"] $wsTerm
-exec --no-startup-id i3-msg 'exec xfce4-terminal;'
+#exec --no-startup-id i3-msg 'exec xfce4-terminal;'
 
 ## Evolution
-assign [class="Evolution"] $wsMail
-exec --no-startup-id i3-msg 'exec evolution;'
+# assign [class="Evolution"] $wsMail
+# exec --no-startup-id i3-msg 'exec evolution;'
 
 ## VSCode
 assign [class="Code"] $wsCode

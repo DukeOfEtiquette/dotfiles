@@ -8,13 +8,13 @@ general {
   color_bad = '#ba5e57'
 }
 
-order += "load"
-order += "cpu_temperature 0"
-order += "disk /"
 order += "ethernet eno1"
+order += "load"
+#order += "cpu_temperature 0"
+order += "disk /"
 order += "volume master"
 order += "tztime local"
-# order += "tztime france"
+order += "tztime france"
 
 load {
   format = "<span> %1min Load </span>"
@@ -46,6 +46,6 @@ tztime local {
 }
 
 tztime france {
-  format = "%a %b %-d %I:%M %p"
+  format = "France %I:%M %p"
   timezone = "Europe/Paris"
 }
