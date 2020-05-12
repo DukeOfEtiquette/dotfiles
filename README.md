@@ -14,7 +14,7 @@
 
 [Slack](https://linuxize.com/post/how-to-install-slack-on-ubuntu-18-04/)
 
-[Evolution Mail Client](https://wiki.gnome.org/Apps/Evolution)
+[Flameshot](https://github.com/lupoDharkael/flameshot#debian)
 
 [nvm](https://github.com/nvm-sh/nvm)
 
