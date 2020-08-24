@@ -19,8 +19,8 @@ set $mod Mod4
 exec --no-startup-id xmodmap -e 'keycode 135 = Super_L' && xset -r 135
 
 # monitor names
-set $monitor_left "DP-5"
-set $monitor_right "DP-7"
+set $monitor_left "DP-1"
+set $monitor_right "DP-3"
 
 set $wsSlack "1:Slack"
 set $wsWeb "2:Web"
@@ -37,17 +37,18 @@ set $wsCode "f:code"
 
 # https://media2.giphy.com/media/4PJhao7x3hAK4/giphy.gif?cid=790b76119a37e19f7fde75f8195515e777ea0a7d7ed6f60a&rid=giphy.gif
 # exec xrandr --output $monitor_right --mode 1920x1080
+exec --no-startup-id xrandr --output $monitor_left --auto --left-of $monitor_right
 bindsym $mod+Shift+v exec xrandr --output $monitor_left --auto --left-of $monitor_right
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #
 # Default font size: 8
-font pango:Cascadia Mono 12
+#font pango:Cascadia Mono 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 12
+font pango:DejaVu Sans Mono 12
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -61,6 +62,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+Shift+Return exec "zsh -c samedirterm; zsh"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -135,6 +137,7 @@ bindsym $mod+v split v
 # bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
+workspace_layout tabbed
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
@@ -229,57 +232,71 @@ exec --no-startup-id synergy
 
 
 # PERSONAL SHIT, PROBABLY BREAKING SOMETHING
-
 ## fuckin touchpad
-## https://aur.archlinux.org/packages/touchpad-toggle/
-# bindcode 72 exec touchpad-toggle
+### source: https://aur.archlinux.org/packages/touchpad-toggle/
+#bindcode 72 exec touchpad-toggle
 
 ## volume settings
 bindcode 69 exec pactl set-sink-volume 0 +3%
 bindcode 68 exec pactl set-sink-volume 0 -3%
 bindcode 67 exec amixer -D pulse set Master toggle
 
+
 ## screenshots
-## requires: main, xdotool
-# draw square
+#requires: main, xdotool
+### draw square
 bindsym --release Print exec "maim ~/screenshots/$(date +%F-%T).png -s -c 1,0,0,0.6 -p 10"
 
-# Just window
+### Just window
 bindsym Shift+Print exec "maim ~/screenshots/$(date +%F-%T).png -i $(xdotool getactivewindow)"
 
-# Screen (will capture dual monitor)
+### Screen (will capture dual monitor)
 bindsym $mod+Print exec "maim ~/screenshots/$(date +%F-%T).png"
 
-# https://www.reddit.com/r/i3wm/comments/42087l/padding_in_the_titlebar/
+
+## Window title format
+### source: https://www.reddit.com/r/i3wm/comments/42087l/padding_in_the_titlebar/
 for_window [class=".*"] title_format "<span> %title</span>"
 
-# STARTUP and LOCATION
-## Slack
-assign [class="Slack"] $wsSlack
-#exec --no-startup-id slack
 
-## Google
-assign [class="Google"] $wsWeb
+## Default workspaces
+### Web
+#assign [class="Google"] $wsWeb
 assign [class="firefox"] $wsWeb
+#i3-msg move $wsWeb to output $monitor_left
+
+### SMS
 for_window [title="Hangouts"] move to workspace $wsChat
-#exec --no-startup-id google-chrome
 
-## Terminal
+### Terminal
 assign [class="terminal"] $wsTerm
-#exec --no-startup-id i3-msg 'exec xfce4-terminal;'
+#i3-msg move $wsTerm to output $monitor_right
 
-## Evolution
-# assign [class="Evolution"] $wsMail
-# exec --no-startup-id i3-msg 'exec evolution;'
+### Slack
+assign [class="Slack"] $wsSlack
 
-## VSCode
+### VSCode
 assign [class="Code"] $wsCode
 
-## Starting User Location
+
+## STARTUP
+### Start chrome
+#exec --no-startup-id "google-chrome-stable; exec sh -c 'sleep 3'"
+
+### Start a terminal
+#exec --no-startup-id i3-msg 'exec xfce4-terminal;'
+
+### Start slack
+#exec --no-startup-id slack
+
+### Starting User Location - run last!!!
 exec --no-startup-id i3-msg workspace $wsTerm
 
-# PANEL
-# https://www.schemecolor.com/dark-forest-greens-color-combination.php
+exec --no-startup-id /home/adam/.config/i3/startup_work_tools.sh
+
+
+## PANEL
+### source: https://www.schemecolor.com/dark-forest-greens-color-combination.php
 bar {
    colors {
         background #051F20
@@ -298,7 +315,7 @@ bar {
   status_command i3status
 }
 
-# class                 border  backgr. text    indicator child_border
+### class                border  backgr. text    indicator child_border
 client.focused          #CC9600 #051F20 #DAF1DE #8EB69B   #d8dee8
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #dddddd #5f676a #bbbbbb #2f343f   #2f343f
@@ -306,10 +323,3 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background	#ffffff
-
-
-
-
-
-
-

@@ -124,9 +124,13 @@ function rebootwindows() {
 # https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#environment-setup
 # export PATH="/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.1${PATH:+:${PATH}}"
 
+# start nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# start rvm
+# source "/etc/profile.d/rvm.sh"
 
 # ENV config
 export EDITOR='/usr/bin/code'
@@ -142,6 +146,9 @@ alias volctl='pavucontrol'
 alias mongostart='sudo service mongod start'
 alias mongostop='sudo service mongod stop'
 alias mongorestart='sudo service mongod restart'
+alias killbig='killall flameshot zoom slack chrome'
+alias lnp="cd $HOME/bin/LinuxLNP-0.43.05-r07"
+  
 
 # git
 alias gs="git status"
@@ -152,13 +159,19 @@ alias gac="git commit -am"
 # ******************************************************************
 
 # ENV Config
+## conan
+export PATH="/home/adam/.local/bin:$PATH"
+
 ## doxygen
 export DOXYGEN_VERSION="doxygen-1.8.14"
 export DOXYGEN_DIR="$HOME/bin/$DOXYGEN_VERSION"
 
+## qt-creator
+alias qt='/home/adam/Qt5.12.7/Tools/QtCreator/bin/qtcreator &'
+
 ## ts3d specific locations
 export TS3D="$HOME/ts3d"
-export TS3D_HELPERS_BIN="$TS3D/bin/ts3d_helpers" # helper scripts
+export TS3D_BIN="$TS3D/bin" # helper scripts
 export TS3D_MODELS="$TS3D/models"
 export TS3D_HOOPS_LICENSE="$TS3D/hoops_license.txt"
 
@@ -168,11 +181,13 @@ export TS3D_HOOPS_REPOS="$TS3D_REPOS/hoops"
 export TS3D_COM_REPO="$TS3D_HOOPS_REPOS/communicator"
 export TS3D_VIS_REPO="$TS3D_HOOPS_REPOS/visualize"
 export TS3D_LEARN_REPOS="$TS3D_REPOS/learning"
+export TS3D_TUT_BABA="$TS3D/workspace/communicator/building_a_basic_application"
+export TS3D_HWV_BIN="$TS3D_COM_REPO/applications/client/hoops_web_viewer/js"
 
 ## PATH
 export PATH="$HOME/bin/$DOXYGEN_VERSION/bin:$PATH" # control system install doxygen
-export PATH="$TS3D_HELPERS_BIN:$PATH"
-
+export PATH="$HOME/bin/p4v-2020.1.1966006/bin:$PATH" # perforce client
+export PATH="$TS3D_BIN:$PATH"
 
 # VPN shiz
 alias gp='globalprotect'
@@ -186,12 +201,14 @@ alias src="cd $TS3D_REPOS"
 alias com="cd $TS3D_COM_REPO"
 alias vis="cd $TS3D_VIS_REPO"
 alias gss="cd $TS3D_LEARN_REPOS/global_search_stager"
+alias baba="cd $TS3D_TUT_BABA"
 
 # build helpers
 alias com-bld-stg='build-com-docs && stage-com-docs'
 alias serve-com="live-server $TS3D_COM_REPO/documentation"
 
 # QoL
+alias start_server="bash /home/adam/HOOPS/communicator/installed/2019_SP2_U1/HOOPS_Communicator_2019_SP2_U1/quick_start/start_server.sh"
 alias xlic="cat $TS3D_HOOPS_LICENSE | xclip -sel c"
 alias ssh-little='ssh -t www-data@little.ts3d.lan "cd /raid/www/docs-test/communicator ; bash"' # dev deploys happen on little
 
