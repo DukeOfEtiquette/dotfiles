@@ -129,8 +129,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# start rvm
-# source "/etc/profile.d/rvm.sh"
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# jekyll - Install Ruby Gems to ~/gems
+#export GEM_HOME="$HOME/gems"
+#export PATH="$HOME/gems/bin:$PATH"
 
 # ENV config
 export EDITOR='/usr/bin/code'
@@ -141,6 +146,7 @@ alias o='mimeopen'
 alias chrome='google-chrome'
 alias py='python3'
 alias python='python3'
+alias pip='pip3'
 alias ypic='xclip -selection clipboard  -t image/png -i'
 alias volctl='pavucontrol'
 alias mongostart='sudo service mongod start'
@@ -181,7 +187,7 @@ export TS3D_HOOPS_REPOS="$TS3D_REPOS/hoops"
 export TS3D_COM_REPO="$TS3D_HOOPS_REPOS/communicator"
 export TS3D_VIS_REPO="$TS3D_HOOPS_REPOS/visualize"
 export TS3D_LEARN_REPOS="$TS3D_REPOS/learning"
-export TS3D_TUT_BABA="$TS3D/workspace/communicator/building_a_basic_application"
+export TS3D_TUT_BABA="$TS3D/workspace/communicator/basic_app"
 export TS3D_HWV_BIN="$TS3D_COM_REPO/applications/client/hoops_web_viewer/js"
 
 ## PATH
