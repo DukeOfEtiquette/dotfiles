@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# If no arg provided, the prompt for one
+if [ -z "$1" ]
+then
+  read -p "Commit message: " commitMessage
+else
+  commitMessage=$1
+fi
+
+env -i git add $DOTFILES
+env -i git diff $DOTFILES
+env -i git commit -am $commitMessage
