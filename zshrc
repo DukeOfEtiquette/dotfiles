@@ -99,12 +99,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-# PERSONAL SHIT, probably breaking something
+# !!!!!! PERSONAL SHIT !!!!!! probably breaking something
 
 # NOTE: edit the true dotfiles, not symlinks or copies
 alias i3c='vim ~/.everc/dotfiles/.config/i3/config'
 alias i3s='vim ~/.everc/dotfiles/.config/i3status/config'
 alias vz='vim ~/.everc/dotfiles/zshrc'
+export DOTFILES="$HOME/.everc/dotfiles"
+alias dot="cd $DOTFILES"
+export PATH="$DOTFILES/installDotfiles:$PATH"
 
 # mmmmm sexy colors, https://github.com/trapd00r/LS_COLORS#installation
 eval $( dircolors -b $HOME/.dircolors )
@@ -130,8 +133,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
 # jekyll - Install Ruby Gems to ~/gems
 #export GEM_HOME="$HOME/gems"
