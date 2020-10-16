@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+tags="--git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
+
+pushd .
+cd $DOTFILES
+
+env -i git add .
+env -i git diff .
+
 # If no arg provided, the prompt for one
 if [ -z "$1" ]
 then
@@ -8,6 +16,6 @@ else
   commitMessage=$1
 fi
 
-env -i git add $DOTFILES
-env -i git diff $DOTFILES
-env -i git commit -am $commitMessage
+#env -i git $tags commit -am $commitMessage
+
+popd
