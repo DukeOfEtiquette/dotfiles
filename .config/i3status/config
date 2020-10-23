@@ -8,12 +8,18 @@ general {
   color_bad = '#ba5e57'
 }
 
+order += "wireless wlx9848274fa74f"
 order += "load"
 #order += "cpu_temperature 0"
 order += "disk /"
 order += "volume master"
 order += "tztime local"
 order += "tztime france"
+
+wireless wlx9848274fa74f {
+  format_up = "%essid: %ip"
+  format_down = "nil wifi"
+}
 
 load {
   format = "<span> %1min Load </span>"
