@@ -109,6 +109,14 @@ export DOTFILES="$HOME/.everc/dotfiles"
 alias dot="cd $DOTFILES"
 export PATH="$DOTFILES/installDotfiles:$PATH"
 
+# veldus stuffs
+export VELDUS="$HOME/Documents/projects/veldus"
+export VELDUS_WIKI_SRC="$VELDUS/veldus_sphinx"
+export SPHINX_VELDUS_EXT_SRC="$VELDUS/sphinx_veldus_ext"
+export SPHINX_VELDUS_THEME_SRC="$VELDUS/sphinx_veldus_theme"
+
+alias vel="cd $VELDUS && code . && ls"
+
 # mmmmm sexy colors, https://github.com/trapd00r/LS_COLORS#installation
 eval $( dircolors -b $HOME/.dircolors )
 
@@ -146,6 +154,7 @@ export EDITOR='/usr/bin/code'
 # QoL
 alias c="clear"
 alias o='mimeopen'
+alias t='xfce4-terminal'
 alias chrome='google-chrome'
 alias py='python3'
 alias python='python3'
@@ -155,7 +164,7 @@ alias volctl='pavucontrol'
 alias mongostart='sudo service mongod start'
 alias mongostop='sudo service mongod stop'
 alias mongorestart='sudo service mongod restart'
-alias killbig='killall flameshot zoom slack chrome'
+alias killbig='killall flameshot zoom slack chrome code xfce4-terminal'
 alias lnp="cd $HOME/bin/LinuxLNP-0.43.05-r07"
   
 

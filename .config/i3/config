@@ -38,7 +38,11 @@ set $wsCode "f:code"
 # https://media2.giphy.com/media/4PJhao7x3hAK4/giphy.gif?cid=790b76119a37e19f7fde75f8195515e777ea0a7d7ed6f60a&rid=giphy.gif
 # exec xrandr --output $monitor_right --mode 1920x1080
 exec --no-startup-id xrandr --output $monitor_left --auto --left-of $monitor_right
-bindsym $mod+Shift+v exec xrandr --output $monitor_left --auto --left-of $monitor_right
+#bindsym $mod+Shift+v exec xrandr --output $monitor_left --auto --left-of $monitor_right
+
+bindsym $mod+Shift+v exec /home/adam/bin/dev-veldus
+bindsym $mod+Shift+w exec /home/adam/.config/i3/startup_work_tools.sh
+bindsym $mod+Shift+d exec /home/adam/bin/distractions
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -92,6 +96,7 @@ bindsym $mod+Pause mode "$mode_system"
 # For use with xfce4 whisker popup menu in Mint XFCE:
 # bindsym $mod+Shift+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id xfce4-popup-whiskermenu
+
 
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -293,7 +298,7 @@ assign [class="Code"] $wsCode
 ### Starting User Location - run last!!!
 exec --no-startup-id i3-msg workspace $wsTerm
 
-exec --no-startup-id /home/adam/.config/i3/startup_work_tools.sh
+exec --no-startup-id google-chrome-stable --new-window https://messages.google.com/web/conversations
 
 
 ## PANEL
