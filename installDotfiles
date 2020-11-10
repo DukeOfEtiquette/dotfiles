@@ -40,6 +40,12 @@ function backup_homedir () {
       printf "Creating symlink to $file in home directory.\n\n"
       ln -s $dotfile_dir/$file $HOME/.$file
   done
+
+  # install backup script
+  backup_script_dest=/usr/local/sbin/backup_linux.sh
+  rm $backup_script_dest
+  ln -s $dotfile_dir/backup_linux.sh $backup_script_dest
+  printf "Make sure you are BACKING UP yer data!\n"
 }
 
 # This function is responsible for backing up any oh-my-zsh themes
