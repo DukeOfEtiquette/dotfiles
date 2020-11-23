@@ -141,8 +141,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # rbenv
-# export PATH="$HOME/.rbenv/bin:$PATH"
-# eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # jekyll - Install Ruby Gems to ~/gems
 #export GEM_HOME="$HOME/gems"
@@ -178,14 +178,14 @@ alias gac="git commit -am"
 
 # ENV Config
 ## conan
-export PATH="/home/adam/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 ## doxygen
 export DOXYGEN_VERSION="doxygen-1.8.14"
 export DOXYGEN_DIR="$HOME/bin/$DOXYGEN_VERSION"
 
 ## qt-creator
-alias qt='/home/adam/Qt5.12.7/Tools/QtCreator/bin/qtcreator &'
+alias qt="$HOME/Qt5.12.7/Tools/QtCreator/bin/qtcreator &"
 
 ## ts3d specific locations
 export TS3D="$HOME/ts3d"
@@ -226,7 +226,7 @@ alias com-bld-stg='build-com-docs && stage-com-docs'
 alias serve-com="live-server $TS3D_COM_REPO/documentation"
 
 # QoL
-alias start_server="bash /home/adam/HOOPS/communicator/installed/2019_SP2_U1/HOOPS_Communicator_2019_SP2_U1/quick_start/start_server.sh"
+alias start_server="bash $HOME/HOOPS/communicator/installed/2019_SP2_U1/HOOPS_Communicator_2019_SP2_U1/quick_start/start_server.sh"
 alias xlic="cat $TS3D_HOOPS_LICENSE | xclip -sel c"
 alias ssh-little='ssh -t www-data@little.ts3d.lan "cd /raid/www/docs-test/communicator ; bash"' # dev deploys happen on little
 

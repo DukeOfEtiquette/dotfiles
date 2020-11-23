@@ -40,9 +40,9 @@ set $wsCode "f:code"
 exec --no-startup-id xrandr --output $monitor_left --auto --left-of $monitor_right
 #bindsym $mod+Shift+v exec xrandr --output $monitor_left --auto --left-of $monitor_right
 
-bindsym $mod+Shift+v exec /home/adam/bin/dev-veldus
-bindsym $mod+Shift+w exec /home/adam/.config/i3/startup_work_tools.sh
-bindsym $mod+Shift+d exec /home/adam/bin/distractions
+bindsym $mod+Shift+v exec $HOME/bin/dev-veldus
+bindsym $mod+Shift+w exec $HOME/bin/dev-work
+bindsym $mod+Shift+d exec $HOME/bin/distractions
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -295,10 +295,11 @@ assign [class="Code"] $wsCode
 ### Start slack
 #exec --no-startup-id slack
 
-### Starting User Location - run last!!!
-exec --no-startup-id i3-msg workspace $wsTerm
+### Startup process ###
+exec --no-startup-id i3-msg workspace $wsChat
+exec --no-startup-id $HOME/bin/open-chat-client
 
-exec --no-startup-id google-chrome-stable --new-window https://messages.google.com/web/conversations
+exec --no-startup-id i3-msg workspace $wsTerm
 
 
 ## PANEL

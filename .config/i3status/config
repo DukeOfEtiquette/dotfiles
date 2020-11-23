@@ -46,6 +46,6 @@ tztime local {
 }
 
 tztime france {
-  format = "France %I:%M %p"
+  format = "Lyon %I:%M %p"
   timezone = "Europe/Paris"
 }
