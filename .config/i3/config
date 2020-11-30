@@ -212,10 +212,10 @@ mode "resize" {
         bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 90 px or 90 ppt
+        bindsym Down resize grow height 90 px or 90 ppt
+        bindsym Up resize shrink height 90 px or 90 ppt
+        bindsym Right resize grow width 90 px or 90 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -286,21 +286,14 @@ assign [class="Code"] $wsCode
 
 
 ## STARTUP
-### Start chrome
-#exec --no-startup-id "google-chrome-stable; exec sh -c 'sleep 3'"
-
-### Start a terminal
-#exec --no-startup-id i3-msg 'exec xfce4-terminal;'
-
-### Start slack
-#exec --no-startup-id slack
-
-### Startup process ###
+### Open chat in correct spact
 exec --no-startup-id i3-msg workspace $wsChat
 exec --no-startup-id $HOME/bin/open-chat-client
 
-exec --no-startup-id i3-msg workspace $wsTerm
+exec --no-startup-id feh --bg-fill -z /home/adamduquette/backgrounds/*
 
+#### Starting location
+exec --no-startup-id i3-msg workspace $wsTerm
 
 ## PANEL
 ### source: https://www.schemecolor.com/dark-forest-greens-color-combination.php

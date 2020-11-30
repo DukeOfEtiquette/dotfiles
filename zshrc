@@ -166,6 +166,7 @@ alias mongostop='sudo service mongod stop'
 alias mongorestart='sudo service mongod restart'
 alias killbig='killall flameshot zoom slack chrome code xfce4-terminal'
 alias lnp="cd $HOME/bin/LinuxLNP-0.43.05-r07"
+alias ssh-lurch='ssh lurch@192.168.1.16'
   
 
 # git
