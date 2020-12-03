@@ -4,10 +4,6 @@
 
 [Xubuntu+i3wm tutorial](http://feeblenerd.blogspot.com/2015/11/pretty-i3-with-xfce.html)
 
-[VSCode](https://code.visualstudio.com/download)
-
-[Slack](https://linuxize.com/post/how-to-install-slack-on-ubuntu-18-04/)
-
 ## Create linux user
 
 `sudo useradd -m newuser`
@@ -49,6 +45,14 @@ Apply shell config:
 `source ~/.zshrc`
 
 ## Additional Tools
+
+### VSCode
+
+[VSCode](https://code.visualstudio.com/download)
+
+### Slack
+
+[Slack](https://linuxize.com/post/how-to-install-slack-on-ubuntu-18-04/)
 
 ### xclip
 
