@@ -1,42 +1,54 @@
 # dotfiles
 
-## System Installs
-
-### Linux
+## Resources
 
 [Xubuntu+i3wm tutorial](http://feeblenerd.blogspot.com/2015/11/pretty-i3-with-xfce.html)
-
-[Setup zsh+oh-my-zsh](https://www.howtoforge.com/tutorial/how-to-setup-zsh-and-oh-my-zsh-on-linux/)
-
-[.dircolors](https://github.com/trapd00r/LS_COLORS#installation)
 
 [VSCode](https://code.visualstudio.com/download)
 
 [Slack](https://linuxize.com/post/how-to-install-slack-on-ubuntu-18-04/)
 
-[Flameshot](https://github.com/lupoDharkael/flameshot#debian)
+## Create linux user
 
-[nvm](https://github.com/nvm-sh/nvm)
+`sudo useradd -m newuser`
 
-[docker](https://github.com/docker/docker-install)
+`sudo usermod -aG newuser`
 
-[tmux](https://linuxize.com/post/getting-started-with-tmux/)
+`sudo passwd newuser`
 
-## dotfiles Install
+Logout of current user.
 
-Navigate to `personal_dir` and clone repo:
+Login to new user.
+
+User default i3wm settings <esc>
+
+## Install zsh + ohmyzsh
+
+Follow instructions on [ohmyzsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
+
+## Install dotfiles
+
+`mkdir -p ~/.config/i3status`
+
+`touch ~/.config/i3status/config`
+
+TODO: investigate why above two are required
+
+`mkdir personal-dir-name && $_`
 
 `git clone git@github.com:DukeOfEtiquette/dotfiles.git && cd dotfiles`
 
+Install [.dircolors](https://github.com/trapd00r/LS_COLORS#installation)
+
 Verify `installDotfiles` is setup properly and run:
 
-`./installDotfiles`
+`sudo ./installDotfiles`
 
 Apply shell config:
 
 `source ~/.zshrc`
 
-## Additional Setup
+## Additional Tools
 
 ### xclip
 
@@ -50,3 +62,20 @@ In `~/.config/i3/config` there are system bindings for taking screenshots using 
 
 `sudo apt update && sudo apt install main xdotool && mkdir ~/screenshots`
 
+[Flameshot](https://github.com/lupoDharkael/flameshot#debian) can be userful as well.
+
+### Node
+
+[nvm](https://github.com/nvm-sh/nvm)
+
+### Docker
+
+[docker](https://github.com/docker/docker-install)
+
+`sudo usermod -aG docker ${USER}`
+
+Logout after adding user to the docker group.
+
+### tmux
+
+[tmux](https://linuxize.com/post/getting-started-with-tmux/)

@@ -290,7 +290,7 @@ assign [class="Code"] $wsCode
 exec --no-startup-id i3-msg workspace $wsChat
 exec --no-startup-id $HOME/bin/open-chat-client
 
-exec --no-startup-id feh --bg-fill -z /home/adamduquette/backgrounds/*
+exec --no-startup-id feh --bg-fill -z $HOME/backgrounds/*
 
 #### Starting location
 exec --no-startup-id i3-msg workspace $wsTerm
