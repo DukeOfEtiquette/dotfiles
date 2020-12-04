@@ -78,6 +78,18 @@ function backup_i3config () {
   cp -r $dotfile_dir/.config/i3status/* $HOME/.config/i3status/
 }
 
+# This function is responsible for backing up the dunst configuration file
+function backup_dunst () {
+  printf "### STARTING DUNST BACKUP ###\n\n"
+
+  # backup current config
+  mkdir -p $backup_olddir/.config/dunst
+  cp -r $HOME/.config/dunst $backup_olddir/.config/
+
+  # install new config
+  cp -r $dotfile_dir/.config/dunst/* $HOME/.config/dunst/
+}
+
 # This function is responsible for backing up any custom installed fonts
 function backup_fonts () {
   printf "### STARTING FONT BACKUP ###\n\n"
@@ -110,8 +122,11 @@ function backup_all () {
   backup_homedir
   backup_omz
   backup_i3config
+  backup_dunst
   backup_fonts
   backup_terminal
+
+  notify-send -t 2000 "dotfile backup" "backup complete"
 }
 
 # entry point
