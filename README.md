@@ -4,6 +4,8 @@
 
 [Xubuntu+i3wm tutorial](http://feeblenerd.blogspot.com/2015/11/pretty-i3-with-xfce.html)
 
+[Dunst](https://dunst-project.org/documentation/)
+
 ## Create linux user
 
 `sudo useradd -m newuser`
