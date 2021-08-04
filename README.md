@@ -30,7 +30,7 @@ Follow instructions on [ohmyzsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
 
 1. `touch ~/.config/i3status/config`
 
-TODO: investigate why above two are required
+	- TODO: investigate why above two are required
 
 1. `mkdir </path/to/dir> && $_`
 
