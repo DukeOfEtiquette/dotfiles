@@ -8,17 +8,17 @@
 
 ## Create linux user
 
-`sudo useradd -m newuser`
+1. `sudo useradd -m <newuser>`
 
-`sudo usermod -aG newuser`
+1. `sudo usermod -aG <newuser>`
 
-`sudo passwd newuser`
+1. `sudo passwd <newuser>`
 
-Logout of current user.
+1. Logout of current user.
 
-Login to new user.
+1. Login to new user.
 
-User default i3wm settings <esc>
+1. User default i3wm settings <esc>
 
 ## Install zsh + ohmyzsh
 
@@ -26,25 +26,23 @@ Follow instructions on [ohmyzsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
 
 ## Install dotfiles
 
-`mkdir -p ~/.config/i3status`
+1. `mkdir -p ~/.config/i3status`
 
-`touch ~/.config/i3status/config`
+1. `touch ~/.config/i3status/config`
 
 TODO: investigate why above two are required
 
-`mkdir personal-dir-name && $_`
+1. `mkdir </path/to/dir> && $_`
 
-`git clone git@github.com:DukeOfEtiquette/dotfiles.git && cd dotfiles`
+1. `git clone git@github.com:DukeOfEtiquette/dotfiles.git && cd dotfiles`
 
-Install [.dircolors](https://github.com/trapd00r/LS_COLORS#installation)
+1. Install [.dircolors](https://github.com/trapd00r/LS_COLORS#installation)
 
-Verify `installDotfiles` is setup properly and run:
+1. Verify `installDotfiles` is setup properly and run:
 
-`sudo ./installDotfiles`
+1. `sudo ./installDotfiles`
 
-Apply shell config:
-
-`source ~/.zshrc`
+1. Apply shell config: `source ~/.zshrc`
 
 ## Additional Tools
 
