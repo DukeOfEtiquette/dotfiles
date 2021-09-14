@@ -25,7 +25,7 @@ function backup_homedir () {
 
   # create dotfiles_old in homedir
   printf "Creating $backup_olddir for backup of any existing dotfiles in ~"
-  mkdir -p $backup_olddir
+  mkdir -p $backup_olddir/home
   printf "...done\n\n"
 
   # change to the dotfiles directory
@@ -35,10 +35,10 @@ function backup_homedir () {
 
   # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
   for file in $files; do
-      printf "Moving $HOME/.$file to $backup_olddir"
-      mv $HOME/.$file $backup_olddir
+      printf "Moving $HOME/.$file to $backup_olddir/home"
+      mv $HOME/.$file $backup_olddir/home
       printf "Creating symlink to $file in home directory.\n\n"
-      ln -s $dotfile_dir/$file $HOME/.$file
+      ln -s $dotfile_dir/home/$file $HOME/.$file
   done
 
   # install backup script
