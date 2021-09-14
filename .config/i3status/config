@@ -8,15 +8,16 @@ general {
   color_bad = '#ba5e57'
 }
 
-order += "wireless wlx9848274fa74f"
+order += "wireless wlp82s0"
 order += "load"
 #order += "cpu_temperature 0"
 order += "disk /"
 order += "volume master"
 order += "tztime local"
 order += "tztime france"
+order += "battery 0"
 
-wireless wlx9848274fa74f {
+wireless wlp82s0 {
   format_up = "%essid: %ip"
   format_down = "nil wifi"
 }
@@ -48,4 +49,9 @@ tztime local {
 tztime france {
   format = "Lyon %I:%M %p"
   timezone = "Europe/Paris"
+}
+
+battery 0 {
+  format = "%status %percentage"
+  path = "/sys/class/power_supply/BAT0/uevent"
 }

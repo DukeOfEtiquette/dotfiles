@@ -19,8 +19,8 @@ set $mod Mod4
 exec --no-startup-id xmodmap -e 'keycode 135 = Super_L' && xset -r 135
 
 # monitor names
-set $monitor_left "DP-1"
-set $monitor_right "DP-3"
+#set $monitor_left "DP-1"
+#set $monitor_right "DP-3"
 
 set $wsSlack "1:Slack"
 set $wsWeb "2:Web"
@@ -37,10 +37,11 @@ set $wsCode "f:code"
 
 # https://media2.giphy.com/media/4PJhao7x3hAK4/giphy.gif?cid=790b76119a37e19f7fde75f8195515e777ea0a7d7ed6f60a&rid=giphy.gif
 # exec xrandr --output $monitor_right --mode 1920x1080
-exec --no-startup-id xrandr --output $monitor_left --auto --left-of $monitor_right
+#exec --no-startup-id xrandr --output $monitor_left --auto --left-of $monitor_right
 #bindsym $mod+Shift+v exec xrandr --output $monitor_left --auto --left-of $monitor_right
 
 bindsym $mod+Shift+w exec $HOME/bin/dev-work
+bindsym $mod+Shift+s exec $HOME/startup.sh
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -90,6 +91,7 @@ mode "$mode_system" {
 }
 
 bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Home mode "$mode_system"
 
 # For use with xfce4 whisker popup menu in Mint XFCE:
 # bindsym $mod+Shift+d exec dmenu_run

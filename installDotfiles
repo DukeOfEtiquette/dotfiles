@@ -42,10 +42,10 @@ function backup_homedir () {
   done
 
   # install backup script
-  backup_script_dest=/usr/local/sbin/backup_linux.sh
-  rm $backup_script_dest
-  ln -s $dotfile_dir/backup_linux.sh $backup_script_dest
-  printf "Make sure you are BACKING UP yer data!\n"
+  #printf "Make sure you are BACKING UP yer data!\n"
+  #backup_script_dest=/usr/local/sbin/backup_linux.sh
+  #rm $backup_script_dest
+  #ln -s $dotfile_dir/backup_linux.sh $backup_script_dest
 }
 
 # This function is responsible for backing up any oh-my-zsh themes
@@ -117,6 +117,18 @@ function backup_terminal () {
   cp $dotfile_dir/.config/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/
 }
 
+function backup_home_bin () {
+  printf "### STARTING $HOME/bin BACKUP ###\n\n"
+
+  mkdir -p $backup_olddir/bin
+
+  # MOVE anything in $HOME/bin to backup/bin
+  cp -ar $HOME/bin $backup_olddir/
+
+  # copy these ./bin files to $HOME/bin
+  cp -ar $dotfile_dir/bin $HOME/
+}
+
 # This function controls what backup functions are run
 function backup_all () {
   backup_homedir
@@ -125,6 +137,7 @@ function backup_all () {
   backup_dunst
   backup_fonts
   backup_terminal
+  backup_home_bin
 
   notify-send -t 2000 "dotfile backup" "backup complete"
 }
