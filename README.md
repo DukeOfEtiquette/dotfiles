@@ -1,10 +1,8 @@
 # dotfiles
 
-## Resources
+## Start here
 
-[Xubuntu+i3wm tutorial](http://feeblenerd.blogspot.com/2015/11/pretty-i3-with-xfce.html)
-
-[Dunst](https://dunst-project.org/documentation/)
+[Lubuntu+i3wm tutorial](https://feeblenerd.blogspot.com/2016/08/walkthrough-for-lubuntu-with-i3-tiling.html)
 
 ## Create linux user
 
@@ -14,11 +12,11 @@
 
 1. `sudo passwd <newuser>`
 
-1. Logout of current user.
+1. Logout of current user
 
-1. Login to new user.
+1. Login to new user
 
-1. User default i3wm settings <esc>
+1. Use default i3wm settings
 
 ## Install zsh + ohmyzsh
 
@@ -26,25 +24,49 @@ Follow instructions on [ohmyzsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
 
 ## Install dotfiles
 
-1. `mkdir -p ~/.config/i3status`
-
-1. `touch ~/.config/i3status/config`
-
-	- TODO: investigate why above two are required
-
-1. `mkdir </path/to/dir> && $_`
-
-1. `git clone git@github.com:DukeOfEtiquette/dotfiles.git && cd dotfiles`
+1. `mkdir -p ~/screenshots`
 
 1. Install [.dircolors](https://github.com/trapd00r/LS_COLORS#installation)
+
+1. `git clone git@github.com:DukeOfEtiquette/dotfiles.git && cd dotfiles`
 
 1. Verify `installDotfiles` is setup properly and run:
 
 1. `sudo ./installDotfiles`
 
-1. Apply shell config: `source ~/.zshrc`
+### Screenshots
+
+In `~/.config/i3/config` there are system bindings for taking screenshots
 
 ## Additional Tools
+
+### debian installs
+
+`sudo apt update && sudo apt install git git-lfs cifs-utils arandr xfce4-terminal xclip maim flameshot xdotool pavucontrol bat tmux`
+
+**xfce4-terminal** terminal emulator of choice
+
+**arandr** GUI for resolution/display configurations (generates xrandr commands)
+
+**cifs-utils** required to mount drives in Berkeley
+
+**xclip** allows CLI to clipboard selections, useful copying stdout
+
+**maim** screenshots
+
+**flameshot** screenshoots as well
+
+**xdotool** programmatically simulate keyboard input and mouse activity
+
+**pavucontrol** graphical volume control
+
+**bat** better than cat
+
+**tmux** terminal multiplexer
+
+### Chrome
+
+[Chrome](https://www.google.com/chrome/)
 
 ### VSCode
 
@@ -54,32 +76,22 @@ Follow instructions on [ohmyzsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
 
 [Slack](https://linuxize.com/post/how-to-install-slack-on-ubuntu-18-04/)
 
-### xclip
+### Docker
 
-This allows CLI to clipboard selections, useful copying stdout
+[docker](https://github.com/docker/docker-install)
 
-`sudo apt update && sudo apt install xclip`
+**RUN THIS** `sudo usermod -aG docker $USER`
 
-### Screenshots
-
-In `~/.config/i3/config` there are system bindings for taking screenshots using two tools that need to be manually downloaded - maim xdotool:
-
-`sudo apt update && sudo apt install main xdotool && mkdir ~/screenshots`
-
-[Flameshot](https://github.com/lupoDharkael/flameshot#debian) can be userful as well.
+**Logout after adding user to the docker group**
 
 ### Node
 
 [nvm](https://github.com/nvm-sh/nvm)
 
-### Docker
+`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash`
 
-[docker](https://github.com/docker/docker-install)
+### Dunst
 
-`sudo usermod -aG docker ${USER}`
+Custom notification window (comes with Lubuntu)
 
-Logout after adding user to the docker group.
-
-### tmux
-
-[tmux](https://linuxize.com/post/getting-started-with-tmux/)
+[Dunst](https://dunst-project.org/documentation/)
