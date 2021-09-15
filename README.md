@@ -24,8 +24,6 @@ Follow instructions on [ohmyzsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
 
 ## Install dotfiles
 
-1. `mkdir -p ~/screenshots`
-
 1. Install [.dircolors](https://github.com/trapd00r/LS_COLORS#installation)
 
 1. `git clone git@github.com:DukeOfEtiquette/dotfiles.git && cd dotfiles`
@@ -36,7 +34,9 @@ Follow instructions on [ohmyzsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
 
 ### Screenshots
 
-In `~/.config/i3/config` there are system bindings for taking screenshots
+1. `mkdir -p ~/screenshots`
+
+Review `$HOME/.config/i3/config`, there are system bindings for taking screenshots
 
 ## Additional Tools
 
