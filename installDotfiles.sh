@@ -13,29 +13,29 @@ WORK_HOSTNAME="BN-EM-ADAM-P1G2"
 PC_HOSTNAME="gomez"
 
 if [ "$HS" = "$WORK_HOSTNAME" ]; then
-    machine="ts3d"
+    profile="ts3d"
 
     # bash installDotfiles.sh
     # sh bin/ts3d/startup_ts3d.sh
 elif [ "$HS" = "$PC_HOSTNAME" ]; then
-    machine="gomez"
+    profile="gomez"
     # sh bin/gomez/startup_gomez.sh
 else
-    echo "UNKNOWN MACHINE"
+    echo "UNKNOWN MACHINE - cannot determine appropriate profile to install"
     exit 1
 fi
 
 # dotfiles directory
-dotfile_dir=$HOME/$personal_dir/dotfiles/$machine
+dotfile_dir=$HOME/$personal_dir/dotfiles/profiles/$profile
 
 # shared dotfiles directory
-shared_dotfile_dir=$HOME/$personal_dir/dotfiles/shared
+shared_dotfile_dir=$HOME/$personal_dir/dotfiles/profiles/shared
 
 # dotfiles backup directory
-backup_olddir=$HOME/$personal_dir/dotfiles_bck/$machine
+backup_olddir=$HOME/$personal_dir/dotfiles_bck/profiles/$profile
 
 # shared dotfiles directory
-shared_backup_dir=$HOME/$personal_dir/dotfiles_bck/shared
+shared_backup_dir=$HOME/$personal_dir/dotfiles_bck/profiles/shared
 
 # This function is responsible for backing up any images used for desktop backgrounds
 function backup_backgrounds () {
@@ -92,10 +92,10 @@ function backup_i3config () {
   printf "### STARTING i3 CONFIG BACKUP ###\n"
 
   mkdir -p $backup_olddir/.config/i3
-  mkdir -p $HOME/.config/i3/config
+  mkdir -p $HOME/.config/i3
 
   mkdir -p $backup_olddir/.config/i3status
-  mkdir -p $HOME/.config/i3status/config
+  mkdir -p $HOME/.config/i3status
 
   # MOVE anything in system .config that starts with 'i3' to backup
   mv $HOME/.config/i3/config $backup_olddir/.config/i3/
@@ -169,7 +169,7 @@ function backup_all () {
   backup_backgrounds
   backup_omz
 
-  # machine-based
+  # profile-based
   backup_homedir
   backup_i3config
   backup_dunst
@@ -183,7 +183,7 @@ function backup_all () {
 # entry point
 backup_all
 
-source $HOME/.zshrc
+# source $HOME/.zshrc
 
 notify-send -t 2000 "dotfile backup" "backup complete"
 
