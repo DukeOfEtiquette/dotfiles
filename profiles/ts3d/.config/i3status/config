@@ -10,7 +10,7 @@ general {
 
 order += "wireless wlp82s0"
 order += "load"
-#order += "cpu_temperature 0"
+order += "cpu_temperature 0"
 order += "disk /"
 order += "volume master"
 order += "tztime local"
@@ -18,7 +18,7 @@ order += "tztime france"
 order += "battery 0"
 
 wireless wlp82s0 {
-  format_up = "%essid: %ip"
+  format_up = "%essid %ip"
   format_down = "nil wifi"
 }
 
@@ -52,6 +52,9 @@ tztime france {
 }
 
 battery 0 {
-  format = "%status %percentage"
+  format = "%percentage %remaining"
   path = "/sys/class/power_supply/BAT0/uevent"
+  low_threshold = 30
+  threshold_type = time
+  integer_battery_capacity = true
 }

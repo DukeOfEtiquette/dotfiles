@@ -68,7 +68,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git web-search docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,11 +102,11 @@ source $ZSH/oh-my-zsh.sh
 # !!!!!! PERSONAL SHIT !!!!!! probably breaking something
 
 # NOTE: edit the true dotfiles, not symlinks or copies
-alias i3c='vim ~/.everc/dotfiles/.config/i3/config'
-alias i3s='vim ~/.everc/dotfiles/.config/i3status/config'
-alias vz='vim ~/.everc/dotfiles/zshrc'
 export DOTFILES="$HOME/.everc/dotfiles"
 alias dot="cd $DOTFILES"
+alias i3c="vim $DOTFILES/ts3d/.config/i3/config"
+alias i3s="vim $DOTFILES/ts3d/.config/i3status/config"
+alias vz="vim $DOTFILES/ts3d/zshrc"
 
 # veldus stuffs
 export VELDUS="$HOME/Documents/projects/veldus"
@@ -117,7 +117,6 @@ export SPHINX_VELDUS_THEME_SRC="$VELDUS/sphinx_veldus_theme"
 alias vel="cd $VELDUS && code . && ls"
 
 # mmmmm sexy colors, https://github.com/trapd00r/LS_COLORS#installation
-# eval $( dircolors -b $HOME/.dircolors )
 . "$HOME/.local/share/lscolors.sh"
 
 # ******************************************************************
@@ -161,67 +160,10 @@ alias python='python3'
 alias pip='pip3'
 alias ypic='xclip -selection clipboard  -t image/png -i'
 alias volctl='pavucontrol'
-alias mongostart='sudo service mongod start'
-alias mongostop='sudo service mongod stop'
-alias mongorestart='sudo service mongod restart'
 alias killbig='killall flameshot zoom slack chrome code xfce4-terminal'
-alias lnp="cd $HOME/bin/LinuxLNP-0.43.05-r07"
-alias ssh-lurch='ssh lurch@192.168.1.16'
+# alias ssh-lurch='ssh lurch@192.168.1.16'
   
 
 # git
 alias gs="git status"
 alias gac="git commit -am"
-
-# ******************************************************************
-# TS3D Specifics
-# ******************************************************************
-
-# ENV Config
-## conan
-export PATH="$HOME/.local/bin:$PATH"
-
-## qt-creator
-alias qt="$HOME/Qt5.12.7/Tools/QtCreator/bin/qtcreator &"
-
-## ts3d specific locations
-export TS3D="$HOME/ts3d"
-export TS3D_BIN="$HOME/bin/ts3d" # helper scripts
-export TS3D_MODELS="$TS3D/models"
-export TS3D_HOOPS_LICENSE="$TS3D/hoops_license.txt"
-
-## repo locations
-export TS3D_REPOS="$TS3D/src"
-export TS3D_HOOPS_REPOS="$TS3D_REPOS/hoops"
-export TS3D_COM_REPO="$TS3D_HOOPS_REPOS/communicator"
-export TS3D_VIS_REPO="$TS3D_HOOPS_REPOS/visualize"
-export TS3D_LEARN_REPOS="$TS3D_REPOS/learning"
-export TS3D_TUT_BABA="$TS3D/workspace/communicator/basic_app"
-export TS3D_HWV_BIN="$TS3D_COM_REPO/applications/client/hoops_web_viewer/js"
-
-## PATH
-export PATH="$TS3D_BIN:$PATH"
-
-# VPN shiz
-alias gp='globalprotect'
-alias gp-details='globalprotect show --details'
-alias gp-berk='globalprotect connect -portal vpn2.techsoft3d.com'
-alias gpd='globalprotect disconnect'
-
-
-# ez navigation
-alias src="cd $TS3D_REPOS"
-alias com="cd $TS3D_COM_REPO"
-alias vis="cd $TS3D_VIS_REPO"
-alias gss="cd $TS3D_LEARN_REPOS/global_search_stager"
-alias baba="cd $TS3D_TUT_BABA"
-
-# build helpers
-alias com-bld-stg='build-com-docs && stage-com-docs'
-alias serve-com="live-server $TS3D_COM_REPO/documentation"
-
-# QoL
-alias start_server="bash $HOME/HOOPS/communicator/installed/2019_SP2_U1/HOOPS_Communicator_2019_SP2_U1/quick_start/start_server.sh"
-alias xlic="cat $TS3D_HOOPS_LICENSE | xclip -sel c"
-alias ssh-little='ssh -t www-data@little.ts3d.lan "cd /raid/www/docs-test/communicator ; bash"' # dev deploys happen on little
-

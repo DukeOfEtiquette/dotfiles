@@ -7,6 +7,7 @@ if [ "$response" = "y" ]; then
     exit 1
 fi
 
+# make sure store for screenshots is created
 mkdir -p $HOME/screenshots
 
 # install dircolors

@@ -40,7 +40,6 @@ set $wsCode "f:code"
 #exec --no-startup-id xrandr --output $monitor_left --auto --left-of $monitor_right
 #bindsym $mod+Shift+v exec xrandr --output $monitor_left --auto --left-of $monitor_right
 
-bindsym $mod+Shift+w exec $HOME/bin/dev-work
 bindsym $mod+Shift+s exec $HOME/bin/startup.sh
 
 # Font for window titles. Will also be used by the bar unless a different font
