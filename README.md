@@ -72,6 +72,8 @@ Review `$HOME/.config/i3/config`, there are system bindings for taking screensho
 
 [VSCode](https://code.visualstudio.com/download)
 
+**Turn on Settings Sync!**
+
 ### Slack
 
 [Slack](https://linuxize.com/post/how-to-install-slack-on-ubuntu-18-04/)
