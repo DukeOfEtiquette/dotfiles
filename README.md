@@ -50,12 +50,6 @@ $ `sudo apt update && sudo apt install git git-lfs cifs-utils arandr xfce4-termi
 
 $ `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
----
-**NOTE**
-
-For a new $USER, you must run the oh-my-zsh install!
----
-
 ### Install dotfiles
 
 1. $ `git clone https://github.com/DukeOfEtiquette/dotfiles.git && cd dotfiles`
@@ -69,6 +63,8 @@ For a new $USER, you must run the oh-my-zsh install!
    - You may want to checkout any `onetimeInstalls.sh` scripts found in a profile
 
 1. Verify `installDotfiles` is setup properly and run: `./installDotfiles`
+
+1. $ `source ~/.zshrc`
 
 ## Additional Tools
 
@@ -90,7 +86,7 @@ For a new $USER, you must run the oh-my-zsh install!
 
 [docker](https://github.com/docker/docker-install)
 
-**RUN THIS** `sudo usermod -aG docker $USER`
+**RUN THIS** `sudo usermod -a -G docker $USER`
 
 **Logout after adding user to the docker group**
 
@@ -108,23 +104,63 @@ Custom notification window (comes with Lubuntu)
 
 ## Useful Linux tips 'n' tricks
 
-### Create linux user
+### Create new linux user
 
-1. Create the user: `sudo adduser <newuser>`
+---
+**NOTE**
 
-1. Add to sudo group: `sudo usermod -a -G sudo <newuser>`
+For a new user, you must run the oh-my-zsh and dircolors install before running this installDotfiles.sh!
 
-1. Logout of current user
+---
 
-1. Login to new user
+For this example, let us assume we are adding a new user named `spare`
 
-1. Use default i3wm settings
+1. Create the user: `sudo adduser spare`
+
+1. Add to sudo group: `sudo usermod -a -G sudo spare`
+
+1. Log into new user: `su - spare`
+
+1. Install oh-my-zsh for user
+
+   - $ `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+
+1. Install dircolors for user
+
+   - `mkdir -p $HOME/.local/share && ( cd /tmp/LS_COLORS && sh install.sh )`
+
+1. Clone this repo
+
+   - $ `git clone https://github.com/DukeOfEtiquette/dotfiles.git && cd dotfiles`
+
+1. Install dotfiles
+
+   - $ `./installDotfiles.sh && source ~/.zshrc`
 
 ### Rename linux user
 
-1. Update user's name: `sudo usermod -l <new-user-name> <old-user-name>`
+For this example, let us assume the following old and new user names:
 
-1. Update user's group name: `sudo groupmod --new-name <new-group-name> <old-group-name>`
+- **old user name:** alpha
+- **new user name:** beta
+
+1. Update user's name
+
+   - $ `sudo usermod -l beta alpha`
+
+1. Update user's group name
+
+   - $ `sudo groupmod --new-name beta alpha`
+
+### Delete linux user
+
+For this example, let us assume we are deleting the user named `spare`
+
+1. Ensure you are logged into a user that is not the one intended for removal
+
+1. Kill running processes: $ `sudo killall -u spare`
+
+1. Delete and remove home directory: $ `sudo userdel -r spare`
 
 ### Get wifi device name for i3status
 

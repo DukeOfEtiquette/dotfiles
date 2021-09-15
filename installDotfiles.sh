@@ -58,7 +58,6 @@ function backup_omz () {
 
   # make backup of OMZ themes
   mkdir -p $shared_backup_dir/omz_themes/theme
-  mkdir -p $HOME/.oh-my-zsh/themes
 
   # MOVE everything that is a theme to backup location
   cp $HOME/.oh-my-zsh/themes/*.zsh-theme $shared_backup_dir/omz_themes/
