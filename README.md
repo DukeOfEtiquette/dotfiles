@@ -20,7 +20,7 @@ Take the following steps to set up a new machine from scratch:
 
 ### Standard debian package installs
 
-`sudo apt update && sudo apt install git git-lfs cifs-utils arandr xfce4-terminal xclip maim flameshot xdotool pavucontrol bat tmux`
+$ `sudo apt update && sudo apt install git git-lfs cifs-utils arandr xfce4-terminal xclip maim flameshot xdotool pavucontrol bat tmux`
 
   - **xfce4-terminal** terminal emulator of choice
 
@@ -48,15 +48,24 @@ Take the following steps to set up a new machine from scratch:
 
 1. Follow instructions on [ohmyzsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
 
+$ `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+
+---
+**NOTE**
+
+For a new $USER, you must run the oh-my-zsh install!
+---
+
 ### Install dotfiles
 
-1. `git clone git@github.com:DukeOfEtiquette/dotfiles.git && cd dotfiles`
+1. $ `git clone https://github.com/DukeOfEtiquette/dotfiles.git && cd dotfiles`
 
-1. `mkdir -p ~/screenshots`
+1. $ `mkdir -p ~/screenshots`
    - Review `$HOME/.config/i3/config`, there are system bindings for taking screenshots
 
 1. Install [.dircolors](https://github.com/trapd00r/LS_COLORS#installation)
 
+   - $ `mkdir /tmp/LS_COLORS && curl -L https://api.github.com/repos/trapd00r/LS_COLORS/tarball/master | tar xzf - --directory=/tmp/LS_COLORS --strip=1 && ( cd /tmp/LS_COLORS && sh install.sh )`
    - You may want to checkout any `onetimeInstalls.sh` scripts found in a profile
 
 1. Verify `installDotfiles` is setup properly and run: `./installDotfiles`
