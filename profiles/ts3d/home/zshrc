@@ -104,6 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # NOTE: edit the true dotfiles, not symlinks or copies, see installDotfiles.sh for more info
 export DOTFILES="$HOME/.everc/dotfiles"
 alias dot="cd $DOTFILES"
+alias dots_refresh="dot && ./installDotfiles.sh && source ~/.zshrc && popd"
 alias i3c="vim $DOTFILES/ts3d/.config/i3/config"
 alias i3s="vim $DOTFILES/ts3d/.config/i3status/config"
 alias vz="vim $DOTFILES/ts3d/zshrc"
@@ -147,22 +148,34 @@ export PATH="$HOME/.local/bin:$PATH"
 # VPN shiz
 alias gp='globalprotect'
 alias gp-details='globalprotect show --details'
-alias gp-berk='globalprotect connect -portal vpn2.techsoft3d.com'
+alias gp-berk='globalprotect connect -portal vpn2.techsoft3d.com && sudo mount -a'
 alias gpd='globalprotect disconnect'
 
 # ez navigation
 export TS3D="$HOME/ts3d"
 alias ts3d="cd $TS3D"
+
 export TS3D_MODELS="$TS3D/models"
 export TS3D_HOOPS_LICENSE="$TS3D/hoops_license.txt"
 alias xlic="cat $TS3D_HOOPS_LICENSE | xclip -sel c"
 
+## Learning navigation
+export TS3D_LEARN_REPOS="$TS3D/learning"
+alias learn="cd $TS3D_LEARN_REPOS"
+
+export TS3D_SPHINX_FRAMEWORK="$TS3D/sphinx_framework"
+alias sph="cd $TS3D_SPHINX_FRAMEWORK && code ."
+
+export TS3D_DOCS="$TS3D/docs"
+alias docs="cd $TS3D_DOCS && code ."
+
+## Product source navigation
 export TS3D_REPOS="$TS3D/src"
 alias src="cd $TS3D_REPOS"
 
 export TS3D_COM_REPO="$TS3D_REPOS/communicator"
+alias com="cd $TS3D_COM_REPO && code ."
+alias Tcom_docker_build_docs_fresh="xclip -selection clipboard -i $TS3D/cmds/com_docker_build_docs_fresh.txt && cd $TS3D_COM_REP && ./dockerize.sh"
+
 export TS3D_VIS_REPO="$TS3D_REPOS/visualize"
-alias com="cd $TS3D_COM_REPO"
-alias vis="cd $TS3D_VIS_REPO"
-export TS3D_LEARN_REPOS="$TS3D_REPOS/learning"
-alias learn="cd $TS3D_LEARN_REPOS"
+alias vis="cd $TS3D_VIS_REPO && code ."
