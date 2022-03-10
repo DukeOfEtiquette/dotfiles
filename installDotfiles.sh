@@ -6,36 +6,37 @@
 ############################
 
 # where will the dotfiles backup live?
-personal_dir=.everc
+personal_dir=$HOME/.everc
 
 HS=$(hostname)
 WORK_HOSTNAME="BN-EM-ADAM-P1G2"
-PC_HOSTNAME="gomez"
+PC_HOSTNAME="lurch"
+profile="rogue"
 
-if [ "$HS" = "$WORK_HOSTNAME" ]; then
-    profile="ts3d"
+# if [ "$HS" = "$WORK_HOSTNAME" ]; then
+    # profile="ts3d"
 
     # bash installDotfiles.sh
     # sh bin/ts3d/startup_ts3d.sh
-elif [ "$HS" = "$PC_HOSTNAME" ]; then
-    profile="gomez"
+# elif [ "$HS" = "$PC_HOSTNAME" ]; then
+    # profile="gomez"
     # sh bin/gomez/startup_gomez.sh
-else
-    echo "UNKNOWN MACHINE - cannot determine appropriate profile to install"
-    exit 1
-fi
+# else
+#     echo "UNKNOWN MACHINE - cannot determine appropriate profile to install"
+#     exit 1
+# fi
 
 # dotfiles directory
-dotfile_dir=$HOME/$personal_dir/dotfiles/profiles/$profile
+dotfile_dir=$personal_dir/dotfiles/profiles/$profile
 
 # shared dotfiles directory
-shared_dotfile_dir=$HOME/$personal_dir/dotfiles/profiles/shared
+shared_dotfile_dir=$personal_dir/dotfiles/profiles/shared
 
 # dotfiles backup directory
-backup_olddir=$HOME/$personal_dir/dotfiles_bck/profiles/$profile
+backup_olddir=$personal_dir/dotfiles_bck/profiles/$profile
 
 # shared dotfiles directory
-shared_backup_dir=$HOME/$personal_dir/dotfiles_bck/profiles/shared
+shared_backup_dir=$personal_dir/dotfiles_bck/profiles/shared
 
 # This function is responsible for backing up any images used for desktop backgrounds
 function backup_backgrounds () {
