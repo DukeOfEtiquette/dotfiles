@@ -103,7 +103,8 @@ source $ZSH/oh-my-zsh.sh
 
 # NOTE: edit the true dotfiles, not symlinks or copies
 export DOTFILES="$HOME/.everc/dotfiles"
-alias dot="cd $DOTFILES"
+export DOTPROFILE="rogue"
+alias dot="cd $DOTFILES && code ."
 alias i3c="vim $DOTFILES/rogue/.config/i3/config"
 alias i3s="vim $DOTFILES/rogue/.config/i3status/config"
 alias vz="vim $DOTFILES/rogue/zshrc"
@@ -122,25 +123,10 @@ function rebootwindows() {
     echo $WINDOWS_TITLE
 }
 
-# ENV Config
-# https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#environment-setup
-# export PATH="/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.1${PATH:+:${PATH}}"
-
-# start nvm
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# rbenv
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
-
-# jekyll - Install Ruby Gems to ~/gems
-#export GEM_HOME="$HOME/gems"
-#export PATH="$HOME/gems/bin:$PATH"
-
 # ENV config
 export EDITOR='/usr/bin/code'
+export MAV_SRC="$HOME/src/maverick"
+export MAV_DEBUG="$HOME/builds/debug"
 
 # QoL
 alias c="clear"
@@ -151,10 +137,6 @@ alias py='python3'
 alias python='python3'
 alias pip='pip3'
 alias ypic='xclip -selection clipboard  -t image/png -i'
-alias volctl='pavucontrol'
-alias killbig='killall flameshot zoom slack chrome code xfce4-terminal'
-# alias ssh-lurch='ssh lurch@192.168.1.16'
-  
 
 # git
 alias gs="git status"

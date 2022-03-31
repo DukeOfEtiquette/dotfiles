@@ -1,42 +1,63 @@
 #!/bin/bash
-############################
+###############################################################################
 # ./installDotfiles
 #
-# This script will apply version control to all system settings, apply the most recent changes to the system, and create backups of all files/directories before running. All paths are intended to be absolute allowing you to run from anywhere.
-############################
+# This script will:
+#    1) Backup all relevant dotfiles
+#    2) Install dotfiles of given --profile
+#
+# The script is broken into 3 main parts, in this order:
+#    1) Setup
+#    2) Helper functions
+#        - Each is responisble for backing up and installing a set of dotfiles
+#    3) Entry Point
+###############################################################################
 
-# where will the dotfiles backup live?
+### <SETUP> ###
+
+# make sure we are in the right place
 personal_dir=$HOME/.everc
+cd "$personal_dir/dotfiles"
 
-HS=$(hostname)
-WORK_HOSTNAME="BN-EM-ADAM-P1G2"
-PC_HOSTNAME="lurch"
-profile="rogue"
+# --profile is required
+if [ "$1" = "--profile" ]; then
+  valid_profiles="gomez rogue"
+  echo $valid_profiles | grep -w -q $2
+  if [ $? -eq 0 ]; then
+    profile=$2
+  else
+    echo "UNKNOWN PROFILE - cannot determine appropriate profile to install"
+    echo "value of --profile: $2"
+    echo "valid profile options: $valid_profiles"
+    echo "Halt execution."
+    exit 1
+  fi
+fi
 
-# if [ "$HS" = "$WORK_HOSTNAME" ]; then
-    # profile="ts3d"
+# double check we have a valid profile
+if [ -z "$profile" ]; then
+  echo "UNKNOWN PROFILE - make sure you are using --profile!!!"
+  echo "Halt execution."
+  exit 1
+fi
 
-    # bash installDotfiles.sh
-    # sh bin/ts3d/startup_ts3d.sh
-# elif [ "$HS" = "$PC_HOSTNAME" ]; then
-    # profile="gomez"
-    # sh bin/gomez/startup_gomez.sh
-# else
-#     echo "UNKNOWN MACHINE - cannot determine appropriate profile to install"
-#     exit 1
-# fi
+# profile directory, holds all dotfiles for a particular profile
+profile_dir=$personal_dir/dotfiles/profiles/$profile
 
-# dotfiles directory
-dotfile_dir=$personal_dir/dotfiles/profiles/$profile
-
-# shared dotfiles directory
+# shared dotfiles directory, holds dotfiles shared by all profiles
 shared_dotfile_dir=$personal_dir/dotfiles/profiles/shared
 
-# dotfiles backup directory
+# dotfiles backup directory, backup is run during each install
 backup_olddir=$personal_dir/dotfiles_bck/profiles/$profile
 
-# shared dotfiles directory
+# shared dotfiles directory, backup is run during each install
 shared_backup_dir=$personal_dir/dotfiles_bck/profiles/shared
+
+### </SETUP> ###
+
+
+
+### <HELPER_FUNCTIONS> ###
 
 # This function is responsible for backing up any images used for desktop backgrounds
 function backup_backgrounds () {
@@ -78,7 +99,7 @@ function backup_homedir () {
   # printf "...done\n\n"
 
   # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-  for file in $dotfile_dir/home/* ; do
+  for file in $profile_dir/home/* ; do
     basename_file="$(basename $file)"
 
     # printf "Moving $HOME/.$file to $backup_olddir/home \n"
@@ -103,8 +124,8 @@ function backup_i3config () {
   mv $HOME/.config/i3status/config $backup_olddir/.config/i3status/
 
   # copy these Linux i3 .config to system
-  cp -r $dotfile_dir/.config/i3/* $HOME/.config/i3/
-  cp -r $dotfile_dir/.config/i3status/* $HOME/.config/i3status/
+  cp -r $profile_dir/.config/i3/* $HOME/.config/i3/
+  cp -r $profile_dir/.config/i3status/* $HOME/.config/i3status/
 }
 
 # This function is responsible for backing up the dunst configuration file
@@ -118,7 +139,7 @@ function backup_dunst () {
   cp -r $HOME/.config/dunst $backup_olddir/.config/
 
   # install new config
-  cp -r $dotfile_dir/.config/dunst/* $HOME/.config/dunst/
+  cp -r $profile_dir/.config/dunst/* $HOME/.config/dunst/
 }
 
 # This function is responsible for backing up any custom installed fonts
@@ -132,7 +153,7 @@ function backup_fonts () {
   mv $HOME/.fonts/*.ttf $backup_olddir/.fonts/
 
   # copy these Linux .font
-  cp -r $dotfile_dir/.fonts/*.ttf $HOME/.fonts/
+  cp -r $profile_dir/.fonts/*.ttf $HOME/.fonts/
 }
 
 # This function is responsible for backing up XFCE terminal config
@@ -146,7 +167,7 @@ function backup_terminal () {
   mv $HOME/.config/xfce4/terminal/terminalrc $backup_olddir/.config/xfce4/terminal/terminalrc
 
   # copy these Linux i3 .config to system
-  cp $dotfile_dir/.config/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/
+  cp $profile_dir/.config/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/
 }
 
 function backup_home_bin () {
@@ -159,7 +180,7 @@ function backup_home_bin () {
   cp -ar $HOME/bin $backup_olddir/
 
   # copy these ./bin files to $HOME/bin
-  cp -ar $dotfile_dir/bin $HOME/
+  cp -ar $profile_dir/bin $HOME/
 }
 
 # This function controls what backup functions are run
@@ -181,10 +202,12 @@ function backup_all () {
   printf "### BACKUP_ALL COMPLETE ###\n"
 }
 
-# entry point
-backup_all
+### </HELPER_FUNCTIONS> ###
 
-# source $HOME/.zshrc
 
-notify-send -t 2000 "dotfile backup" "backup complete"
 
+### <ENTRY_POINT> ###
+
+backup_all && notify-send -t 2000 "dotfile install" "backup complete"
+
+### </ENTRY_POINT> ###
