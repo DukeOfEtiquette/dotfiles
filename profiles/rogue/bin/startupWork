@@ -2,4 +2,6 @@
 
 xfce4-terminal \
     --default-working-directory "/home/adam/src/maverick" \
-    -e 'bash -c "code .; zsh"' -T "Workstation"
+    -e 'bash -c "code .; zsh"' -T "Workstation" &
+
+discord &
