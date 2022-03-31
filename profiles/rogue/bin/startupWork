@@ -5,3 +5,4 @@ xfce4-terminal \
     -e 'bash -c "code .; zsh"' -T "Workstation" &
 
 discord &
+skypeforlinux &
