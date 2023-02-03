@@ -126,6 +126,8 @@ function rebootwindows() {
 # ENV config
 export EDITOR='/usr/bin/code'
 export MAV_SRC="$HOME/src/maverick"
+alias codemav="cd $MAV_SRC && code ."
+alias toys="cd $MAV_SRC/platinum/ToysDeluxeKeno"
 export MAV_DEBUG="$HOME/builds/debug"
 
 # QoL
@@ -137,7 +139,15 @@ alias py='python3'
 alias python='python3'
 alias pip='pip3'
 alias ypic='xclip -selection clipboard  -t image/png -i'
+alias audacity="/home/adam/bin/audacity-linux-3.1.3-x86_64.AppImage &"
+alias ssh-lurch='ssh lurch@raspberrypi.local'
 
 # git
 alias gs="git status"
 alias gac="git commit -am"
+
+
+# nodejs and npm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

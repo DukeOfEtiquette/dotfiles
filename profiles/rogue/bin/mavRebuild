@@ -1,0 +1,60 @@
+#!/bin/sh
+
+PLATFORM=''
+
+if [ -z "$1" ]; then
+    echo 'Missing arg, choose (1): --platinum or --encore'
+    exit 0
+fi
+
+if [ "$1" = '--platinum' ]; then
+    PLATFORM=platinum
+fi
+
+if [ "$1" = "--encore" ]; then
+    PLATFORM=encore
+fi
+
+if [ "$PLATFORM" = "" ]; then
+    echo 'OH NO, something went wrong. Abort!'
+    exit 0
+fi
+
+echo $PLATFORM
+
+SOURCE_DIR=$HOME/src/maverick
+BUILD_DIR=$HOME/builds/$PLATFORM/debug
+INSTALL_DIR=$HOME/builds/$PLATFORM/install
+
+# cd ~/builds/debug/platinum
+cd $BUILD_DIR
+
+# rm -rf ~/builds/debug/platinum/*
+# rm -rf ~/builds/platinum_install/*
+rm -rf $BUILD_DIR/*
+rm -rf $INSTALL_DIR/*
+
+ccmake \
+    -S $SOURCE_DIR \
+    -B $BUILD_DIR \
+    -D CMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR \
+    -D CMAKE_BUILD_TYPE=Debug \
+    -D GAME_ClassicKeno=OFF \
+    -D GAME_FiveAlarmReel=OFF \
+    -D GAME_HeidisBierHausReel=OFF \
+    -D GAME_LeprechaunsGoldRainbowBayReel=OFF \
+    -D GAME_MatterhornKeno=OFF \
+    -D GAME_MoneyStreakPoker=ON \
+    -D GAME_MonsterMayhemKeno=OFF \
+    -D GAME_PickYourPleasureKeno=OFF \
+    -D GAME_PlatinumAcesPoker=OFF \
+    -D GAME_PowerKeno=OFF \
+    -D GAME_SevensKeno=OFF \
+    -D GAME_TNTDrawKeno=ON \
+    -D GAME_ToysDeluxeKeno=ON \
+    -D LOG_ENABLE=ON \
+    -D MAVERICK_TARGET_PLATFORM=$PLATFORM \
+    -D MAVERICK_AUTHORIZE_ALL_GAMES=ON \
+    -D MAVERICK_DEMO=ON \
+    -D MAVERICK_HARD_BUTTON_PLAY_THROUGH=ON \
+    -D MAVERICK_PLAYBACK_CONTROLS=ON
