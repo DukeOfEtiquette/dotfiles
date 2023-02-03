@@ -57,12 +57,16 @@ $ `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/
 1. $ `mkdir -p ~/screenshots`
    - Review `$HOME/.config/i3/config`, there are system bindings for taking screenshots
 
+**DEPRECATED**
+
+LS_COLORS script now part of repo, just if it needs updated but no need to install.
+
 1. Install [.dircolors](https://github.com/trapd00r/LS_COLORS#installation)
 
    - $ `mkdir /tmp/LS_COLORS && curl -L https://api.github.com/repos/trapd00r/LS_COLORS/tarball/master | tar xzf - --directory=/tmp/LS_COLORS --strip=1 && ( cd /tmp/LS_COLORS && sh install.sh )`
    - You may want to checkout any `onetimeInstalls.sh` scripts found in a profile
 
-1. Verify `installDotfiles` is setup properly and run: `./installDotfiles`
+1. Verify `installDotfiles` is setup properly and run: `./installDotfiles --profile gomez`
 
 1. $ `source ~/.zshrc`
 
