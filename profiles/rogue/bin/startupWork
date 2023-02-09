@@ -1,11 +1,8 @@
 #!/bin/sh
 
-xfce4-terminal \
-    --default-working-directory "/home/adam/src/maverick" \
-    -e 'bash -c "code .; zsh"' -T "Workstation" &
+wmctrl -s 0
 
 discord &
 skypeforlinux &
 seafile-applet &
-google-chrome &
 evolution &

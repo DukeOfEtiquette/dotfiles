@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# lastDesktop=`wmctrl -l | awk 'BEGIN{a=   0}{if ($2>0+a) a=$2} END{print a}'` # && wmctrl -s $(($lastDesktop + 1))
+
+wmctrl -s 2
+
+google-chrome --new-window "https://open.spotify.com/" "https://twitter.com/home" "https://messages.google.com/web/conversations" "https://mail.google.com/mail/u/0/#inbox" "https://calendar.google.com/calendar/u/0/r/month" "https://www.cnbc.com/live-tv/" &
+
+google-chrome --new-window "https://finviz.com/" "https://www.coinbase.com/assets" "https://pro.kraken.com/app/portfolio/overview""https://onlineaccess.edwardjones.com/app/oa-login" "https://www.tradingview.com/chart/SatGiB3l/" &
