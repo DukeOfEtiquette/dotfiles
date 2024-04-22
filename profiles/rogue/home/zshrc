@@ -105,30 +105,32 @@ source $ZSH/oh-my-zsh.sh
 export DOTFILES="$HOME/.everc/dotfiles"
 export DOTPROFILE="rogue"
 alias dot="cd $DOTFILES && code ."
-alias i3c="vim $DOTFILES/rogue/.config/i3/config"
-alias i3s="vim $DOTFILES/rogue/.config/i3status/config"
-alias vz="vim $DOTFILES/rogue/zshrc"
+# alias i3c="vim $DOTFILES/rogue/.config/i3/config"
+# alias i3s="vim $DOTFILES/rogue/.config/i3status/config"
+# alias vz="vim $DOTFILES/rogue/zshrc"
 
 # mmmmm sexy colors, https://github.com/trapd00r/LS_COLORS#installation
 source "$HOME/bin/lscolors.sh"
 
-# ******************************************************************
-# reboot directly to windows
-#   Inspired by http://askubuntu.com/questions/18170/how-to-reboot-into-windows-from-ubuntu
-# ******************************************************************
-function rebootwindows() {
-    WINDOWS_TITLE=`grep -i "^menuentry 'Windows" /boot/grub/grub.cfg|head -n 1|cut -d"'" -f2`
-    sudo grub-reboot "$WINDOWS_TITLE"
-    sudo reboot
-    echo $WINDOWS_TITLE
-}
+# # ******************************************************************
+# # reboot directly to windows
+# #   Inspired by http://askubuntu.com/questions/18170/how-to-reboot-into-windows-from-ubuntu
+# # ******************************************************************
+# function rebootwindows() {
+#     WINDOWS_TITLE=`grep -i "^menuentry 'Windows" /boot/grub/grub.cfg|head -n 1|cut -d"'" -f2`
+#     sudo grub-reboot "$WINDOWS_TITLE"
+#     sudo reboot
+#     echo $WINDOWS_TITLE
+# }
 
 # ENV config
 export EDITOR='/usr/bin/code'
 export MAV_SRC="$HOME/src/maverick"
 alias codemav="cd $MAV_SRC && code ."
-alias toys="cd $MAV_SRC/platinum/ToysDeluxeKeno"
+alias oles="cd $MAV_SRC/encore/OlesGoneBerzerkKeno"
 export MAV_DEBUG="$HOME/builds/debug"
+export PATH=$PATH:$HOME/builds/mav_tools/animation_maker/cram
+export PATH=$PATH:$HOME/.local/bin
 
 # QoL
 alias c="clear"
@@ -141,6 +143,7 @@ alias pip='pip3'
 alias ypic='xclip -selection clipboard  -t image/png -i'
 alias audacity="/home/adam/bin/audacity-linux-3.1.3-x86_64.AppImage &"
 alias ssh-lurch='ssh lurch@raspberrypi.local'
+alias tbg="source $HOME/bin/toggleBG"
 
 # git
 alias gs="git status"

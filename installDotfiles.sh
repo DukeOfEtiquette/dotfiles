@@ -63,7 +63,7 @@ shared_backup_dir=$personal_dir/dotfiles_bck/profiles/shared
 function backup_backgrounds () {
   printf "### STARTING BACKGROUNDS BACKUP ###\n"
 
-  # make backup of backgrounds dir 
+  # make backup of backgrounds dir
   mkdir -p $shared_backup_dir/backgrounds
   mkdir -p $HOME/backgrounds
 
@@ -181,6 +181,7 @@ function backup_home_bin () {
 
   # copy these ./bin files to $HOME/bin
   cp -ar $profile_dir/bin $HOME/
+  # sudo cp $profile_dir/bin/backup.sh /etc/init.d/backup
 }
 
 # This function controls what backup functions are run

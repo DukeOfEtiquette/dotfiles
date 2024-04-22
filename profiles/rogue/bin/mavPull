@@ -3,7 +3,7 @@
 MAV_SRC=/home/adam/src/maverick
 cd $MAV_SRC
 
-git checkout develop;
+git checkout master;
 git pull;
 git submodule update --init --recursive;
 git submodule foreach --recursive git checkout master;

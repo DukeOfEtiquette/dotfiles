@@ -1,6 +1,6 @@
 [pypi]
   username = __token__
-  password = pypi-AgEIcHlwaS5vcmcCJDFiMTcwZGIzLTQ5NTUtNDljYi04N2E0LWFmZWM1YzEyMGNlYgACKlszLCJkODQ0MzcwZS00ZTdhLTQyZTgtYTIzMi0yOTgwODU2YmNiZTkiXQAABiBBSQk1HvQM_-ZkvShJ6Ei0TW11nMCHIVUSWSdmHHizoA
+  password = pypi-AgEIcHlwaS5vcmcCJDY3YzczMDE3LWFlZmUtNGQyMS04Y2Y2LTBjMmI2NTQ4NGNiYwACKlszLCJkODQ0MzcwZS00ZTdhLTQyZTgtYTIzMi0yOTgwODU2YmNiZTkiXQAABiBv8G_JPkVVVX-o3vfKFFkjOk79zPD-uJu7MLX4C9ktEg
 
 [testpypi]
   username = __token__

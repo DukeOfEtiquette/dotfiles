@@ -1,8 +1,0 @@
-#!/bin/sh
-
-wmctrl -s 0
-
-discord &
-skypeforlinux &
-seafile-applet &
-evolution &
