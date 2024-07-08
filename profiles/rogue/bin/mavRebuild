@@ -26,6 +26,11 @@ fi
 
 echo $PLATFORM
 
+RM_DIR=''
+if [ "$2" = "--rm" ]; then
+    RM_DIR='rm'
+fi
+
 SOURCE_DIR=$HOME/src/maverick
 BUILD_DIR=$HOME/builds/$PLATFORM/debug
 INSTALL_DIR=$HOME/builds/$PLATFORM/install
@@ -33,10 +38,12 @@ INSTALL_DIR=$HOME/builds/$PLATFORM/install
 # cd ~/builds/debug/platinum
 cd $BUILD_DIR
 
-# rm -rf ~/builds/debug/platinum/*
-# rm -rf ~/builds/platinum_install/*
-rm -rf $BUILD_DIR/*
-rm -rf $INSTALL_DIR/*
+if [ "$RM_DIR" = "rm" ]; then
+    # rm -rf ~/builds/debug/platinum/*
+    # rm -rf ~/builds/platinum_install/*
+    rm -rf $BUILD_DIR/*
+    rm -rf $INSTALL_DIR/*
+fi
 
 if [ "$PLATFORM" = "elite" ]; then
 
@@ -45,7 +52,7 @@ if [ "$PLATFORM" = "elite" ]; then
         -B $BUILD_DIR \
         -D CMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR \
         -D CMAKE_BUILD_TYPE=Debug \
-        -D GAME_BigBigPaysMegaDeluxeReel=ON \
+        -D GAME_DiamondCharmReel=ON \
         -D GAME_PandaCoveKeno=ON \
         -D LOG_ENABLE=ON \
         -D MAVERICK_TARGET_PLATFORM=$PLATFORM \
@@ -73,8 +80,8 @@ if [ "$PLATFORM" = "platinum" ]; then
         -D GAME_MiamiHeistKeno=OFF \
         -D GAME_MoneyStreakPoker=OFF \
         -D GAME_MonsterMayhemKeno=OFF \
-        -D GAME_PickYourPleasureKeno=OFF \
-        -D GAME_PickYourPleasureReel=OFF \
+        -D GAME_PickYourPleasureKeno=ON \
+        -D GAME_PickYourPleasureReel=ON \
         -D GAME_PlatinumAcesPoker=OFF \
         -D GAME_PowerKeno=OFF \
         -D GAME_RainingDiamondsKeno=ON \
