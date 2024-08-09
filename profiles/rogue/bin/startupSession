@@ -42,7 +42,7 @@ base() {
   declare -a urls=(
   "https://open.spotify.com/"
   "https://messages.google.com/web/conversations"
-  "https://webmail.roguegamingstudio.com/#"
+  "https://gmail.com/"
   "https://roguegamingstudio.com:8443/bugzilla/"
   )
 
@@ -94,12 +94,11 @@ personal() {
   dest=$NEXT_DESKTOP
 
   urls=(
-  "https://mail.google.com/mail/u/0/#inbox"
-  "https://calendar.google.com/calendar/u/0/r/month"
   "https://onlineaccess.edwardjones.com/app/oa-login"
   "https://robinhood.com"
   "https://www.coinbase.com/assets"
   "https://pro.kraken.com/app/portfolio/overview"
+  "https://twitter.com/"
   )
 
   name="finance"
